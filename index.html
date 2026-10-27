@@ -5,270 +5,359 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <meta name="color-scheme" content="light dark">
-<title>Destino</title>
+<title>Dos caminos, un destino</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#EFE9DD; --paper-deep:#E6DFD0; --ink:#26211D; --ink-soft:#5A524A; --ink-faint:#9C938A; --rule:#CFC6B5;
-  --cloth:#4A1C27; --cloth-deep:#35121B; --foil:#C9A961; --foil-soft:#E3CD95;
-  --nohemi:#6E2634; --greg:#33505F;
-  --measure:34rem;
+  --bg:#FFFFFF; --bg-2:#F7F7F5; --fg:#1A1A1A; --fg-2:#5F5F5F; --fg-3:#9A9A9A; --line:#E8E8E6;
+  --nohemi:#B23A48; --greg:#2E6F95;
+  --sans:"Inter Tight",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Source Serif 4",Charter,"Iowan Old Style",Georgia,serif;
+  --measure:40rem; --gutter:clamp(1.25rem,5vw,3rem);
 }
-@media (prefers-color-scheme: dark){
-  :root{ --paper:#1B1816; --paper-deep:#232019; --ink:#E6DED2; --ink-soft:#B5AB9D; --ink-faint:#756C62; --rule:#3A342E;
-         --cloth:#2A1016; --cloth-deep:#1A0A0E; --nohemi:#C9697A; --greg:#86A7B8; }
+:root[data-theme="dark"]{ --bg:#121212; --bg-2:#1B1B1B; --fg:#ECECEC; --fg-2:#A8A8A8; --fg-3:#6E6E6E; --line:#2A2A2A; --nohemi:#E0717E; --greg:#6FA8CC; }
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){ --bg:#121212; --bg-2:#1B1B1B; --fg:#ECECEC; --fg-2:#A8A8A8; --fg-3:#6E6E6E; --line:#2A2A2A; --nohemi:#E0717E; --greg:#6FA8CC; }
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} }
-body{margin:0;background:var(--paper);color:var(--ink);font-family:Literata,"Iowan Old Style",Georgia,serif;font-size:1.0625rem;line-height:1.68;font-variant-numeric:oldstyle-nums;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;scroll-padding-top:4.5rem}
+@media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} *{transition:none!important} }
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--serif);font-size:1.1875rem;line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .2s,color .2s}
 a{color:inherit}
-a:focus-visible,button:focus-visible{outline:2px solid var(--foil);outline-offset:3px}
+:focus-visible{outline:2px solid var(--fg);outline-offset:3px;border-radius:2px}
+.wrap{max-width:var(--measure);margin:0 auto;padding:0 var(--gutter)}
+.wide{max-width:64rem;margin:0 auto;padding:0 var(--gutter)}
 
-/* progress thread */
-#hilo{position:fixed;top:0;left:0;height:3px;width:0;background:var(--foil);z-index:10;transition:width .1s linear}
-@media (prefers-reduced-motion:reduce){ #hilo{transition:none} }
+/* top bar */
+.barra{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.barra .in{max-width:64rem;margin:0 auto;padding:.7rem var(--gutter);display:flex;align-items:center;gap:1rem;font-family:var(--sans);font-size:.9rem}
+.barra .logo{font-weight:600;text-decoration:none;letter-spacing:-.01em}
+.barra nav{display:flex;gap:1.1rem;margin-left:auto}
+.barra nav a{text-decoration:none;color:var(--fg-2)}
+.barra nav a:hover{color:var(--fg)}
+.tema{display:inline-grid;place-items:center;width:2.2rem;height:2.2rem;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--fg);cursor:pointer;padding:0}
+.tema:hover{background:var(--bg-2)}
+.tema svg{width:1rem;height:1rem;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tema .luna{display:none}
+:root[data-theme="dark"] .tema .sol{display:none}
+:root[data-theme="dark"] .tema .luna{display:block}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .tema .sol{display:none} :root:not([data-theme="light"]) .tema .luna{display:block} }
+#progreso{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--fg)}
+@media (max-width:600px){ .barra nav{display:none} }
 
-/* cover */
-.cubierta{min-height:100svh;background:
-  radial-gradient(120% 90% at 50% 110%, var(--cloth-deep) 0%, transparent 60%),
-  repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 3px),
-  repeating-linear-gradient(90deg, rgba(0,0,0,.05) 0 1px, transparent 1px 3px),
-  var(--cloth);
-  color:var(--foil-soft);display:grid;grid-template-rows:auto 1fr auto;padding:clamp(1.5rem,4vw,3rem);text-align:center}
-.cubierta .autores{font-family:"Cormorant Garamond",serif;font-size:1.15rem;letter-spacing:.04em;color:var(--foil)}
-.cubierta .centro{display:grid;place-content:center;gap:1.4rem;padding:3rem 0}
-.cubierta h1{font-family:"Cormorant Garamond",serif;font-weight:300;font-size:clamp(3.4rem,11vw,8.5rem);line-height:.95;margin:0;color:var(--foil-soft);letter-spacing:-.01em}
-.cubierta .sub{font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:300;font-size:clamp(1.25rem,2.6vw,1.9rem);margin:0;color:var(--foil)}
-.cubierta .orn{width:3.5rem;height:1px;background:var(--foil);margin:.6rem auto 0;opacity:.8}
-.cubierta .abrir{font-family:"Cormorant Garamond",serif;font-size:1.1rem;color:var(--foil);text-decoration:none;border-bottom:1px solid transparent;justify-self:center}
-.cubierta .abrir:hover{border-bottom-color:var(--foil)}
+/* hero */
+.hero{position:relative;min-height:min(92svh,56rem);display:grid;align-items:end;color:#fff;isolation:isolate;overflow:hidden;background:#1d1f24}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.hero .velo{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,.25) 45%,rgba(0,0,0,.78) 100%)}
+.hero .fondo{position:absolute;inset:0;z-index:-3;background:
+  radial-gradient(60% 50% at 20% 30%, #5a2630 0%, transparent 70%),
+  radial-gradient(55% 55% at 85% 70%, #1f4d6b 0%, transparent 70%),
+  #1d1f24}
+.hero .in{max-width:64rem;width:100%;margin:0 auto;padding:clamp(4rem,10vw,7rem) var(--gutter) clamp(2.5rem,6vw,4rem);font-family:var(--sans)}
+.hero h1{font-size:clamp(2.8rem,8.5vw,6.4rem);line-height:.98;letter-spacing:-.035em;font-weight:700;margin:0 0 1.2rem;max-width:12ch;text-wrap:balance}
+.hero p{font-family:var(--serif);font-size:clamp(1.15rem,2.2vw,1.5rem);line-height:1.45;max-width:34rem;margin:0 0 2rem;color:rgba(255,255,255,.86)}
+.hero .meta{display:flex;flex-wrap:wrap;gap:1.2rem;align-items:center;font-size:.95rem;color:rgba(255,255,255,.8)}
+.hero .btn{display:inline-block;background:#fff;color:#111;text-decoration:none;font-weight:600;padding:.75rem 1.2rem;border-radius:999px;font-size:.95rem}
+.hero .btn:hover{background:#ececec}
+.hero .foto-nota{position:absolute;right:var(--gutter);bottom:1rem;font-family:var(--sans);font-size:.75rem;color:rgba(255,255,255,.55)}
 
-/* page frame */
-.pagina{max-width:calc(var(--measure) + 2 * clamp(1.25rem,5vw,4rem));margin:0 auto;padding:clamp(3.5rem,9vw,7rem) clamp(1.25rem,5vw,4rem)}
-.pagina + .pagina{border-top:1px solid var(--rule)}
+/* section headings */
+.sec{padding:clamp(3.5rem,8vw,6rem) 0}
+.sec + .sec{border-top:1px solid var(--line)}
+.sec h2{font-family:var(--sans);font-size:clamp(1.6rem,3vw,2.1rem);letter-spacing:-.025em;font-weight:600;margin:0 0 .5rem}
+.sec .lead{color:var(--fg-2);margin:0 0 2.2rem;font-size:1.05rem}
 
-/* índice */
-.indice h2{font-family:"Cormorant Garamond",serif;font-weight:400;font-size:2.4rem;margin:0 0 2.2rem;text-align:center}
-.indice .parte{font-family:"Cormorant Garamond",serif;font-size:1.45rem;font-weight:500;margin:2rem 0 .6rem;display:flex;align-items:baseline;gap:.75rem}
-.indice .parte small{font-family:Literata,serif;font-size:.85rem;font-weight:400;color:var(--ink-soft);font-style:italic}
-.indice ol{list-style:none;margin:0;padding:0}
-.indice li a{display:flex;align-items:baseline;gap:.5rem;text-decoration:none;padding:.3rem 0;color:var(--ink)}
-.indice li a:hover .t{text-decoration:underline;text-underline-offset:.2em;text-decoration-color:var(--rule)}
-.indice .n{min-width:1.6rem;color:var(--ink-faint);font-variant-numeric:tabular-nums oldstyle-nums}
-.indice .t{flex:0 1 auto}
-.indice .leader{flex:1 1 auto;border-bottom:1px dotted var(--rule);transform:translateY(-.35em);min-width:1.5rem}
-.indice .q{color:var(--ink-faint);font-style:italic;font-size:.9rem}
-.indice li.pend .t{color:var(--ink-soft)}
-.marca{display:inline-flex;gap:3px;align-self:center;margin-left:.1rem}
-.marca i{display:block;width:.55rem;height:.55rem;border-radius:50%}
-.marca .mn{background:var(--nohemi)} .marca .mg{background:var(--greg)}
+/* epigraph */
+.epi{text-align:center;padding:clamp(3.5rem,8vw,6rem) var(--gutter)}
+.epi blockquote{margin:0 auto .8rem;max-width:30rem;font-size:clamp(1.45rem,3vw,1.9rem);line-height:1.35;font-weight:400;letter-spacing:-.01em}
+.epi cite{font-family:var(--sans);font-style:normal;color:var(--fg-2);font-size:.9rem}
 
-/* part openers */
-.apertura{text-align:center;padding-top:clamp(5rem,14vw,10rem);padding-bottom:clamp(5rem,14vw,10rem)}
-.apertura .num{font-family:"Cormorant Garamond",serif;font-weight:300;font-size:clamp(4rem,10vw,6.5rem);line-height:1;color:var(--ink-faint);margin:0}
-.apertura h2{font-family:"Cormorant Garamond",serif;font-weight:400;font-size:clamp(2.2rem,5vw,3.4rem);margin:.4rem 0 1rem;line-height:1.1}
-.apertura p{font-style:italic;color:var(--ink-soft);max-width:28rem;margin:0 auto}
+/* contents */
+.toc .parte{font-family:var(--sans);display:flex;align-items:baseline;gap:.8rem;margin:2.4rem 0 .4rem;padding-bottom:.6rem;border-bottom:1px solid var(--fg)}
+.toc .parte b{font-weight:600;font-size:1.05rem}
+.toc .parte span{color:var(--fg-2);font-size:.9rem}
+.toc ol{list-style:none;margin:0;padding:0}
+.toc li{border-bottom:1px solid var(--line)}
+.toc li a{display:grid;grid-template-columns:2rem 1fr auto;align-items:center;gap:1rem;padding:.9rem 0;text-decoration:none}
+.toc li a:hover .t{text-decoration:underline;text-underline-offset:.22em;text-decoration-thickness:1px}
+.toc .n{font-family:var(--sans);color:var(--fg-3);font-size:.9rem;font-variant-numeric:tabular-nums}
+.toc .t{font-family:var(--sans);font-weight:500;font-size:1.02rem;letter-spacing:-.01em}
+.toc .t small{display:block;font-family:var(--serif);font-weight:400;color:var(--fg-2);font-size:.95rem;margin-top:.15rem}
+.toc .r{font-family:var(--sans);font-size:.8rem;color:var(--fg-3);display:flex;align-items:center;gap:.6rem;white-space:nowrap}
+.voces{display:inline-flex;gap:4px}
+.voces i{width:.5rem;height:.5rem;border-radius:50%;display:block}
+.vn{background:var(--nohemi)} .vg{background:var(--greg)}
+.toc li.ok .r .e{color:var(--fg-2)}
+@media (max-width:520px){ .toc li a{grid-template-columns:1.6rem 1fr} .toc .r .e{display:none} .toc .r{grid-column:2} }
 
 /* chapters */
-.cap .voz{display:flex;align-items:center;gap:.7rem;font-style:italic;color:var(--ink-soft);margin:0 0 1.1rem;font-size:.95rem}
-.cap .voz::before{content:"";width:2.2rem;height:2px;background:var(--v,var(--ink-faint))}
-.cap .voz.dos::before{background:linear-gradient(90deg,var(--nohemi) 50%,var(--greg) 50%)}
-.cap .cn{font-family:"Cormorant Garamond",serif;font-size:1.1rem;color:var(--ink-faint);margin:0 0 .3rem;letter-spacing:.02em}
-.cap h2{font-family:"Cormorant Garamond",serif;font-weight:400;font-size:clamp(2rem,4.5vw,2.9rem);line-height:1.1;margin:0 0 2rem}
-.cap p{margin:0 0 1.25em;hyphens:auto;-webkit-hyphens:auto;text-wrap:pretty}
-.cap .texto > p:not(.pregunta):not(.enblanco):first-of-type::first-letter, .cap .texto > .pregunta + p::first-letter{font-family:"Cormorant Garamond",serif;font-weight:400;font-size:4.1em;line-height:.8;float:left;margin:.08em .12em 0 0;color:var(--v,var(--ink))}
-.cap .texto > p + p{text-indent:1.4em}
-.cap .texto > .pregunta + p{text-indent:0}
-.cap .pregunta{font-family:"Cormorant Garamond",serif;font-size:1.55rem;line-height:1.3;margin:0 0 1.4rem}
-.cap .firma{font-style:italic;color:var(--ink-soft);margin-top:1.6rem}
-.cap .hablante{display:block;margin:2.4rem 0 .6rem;font-style:italic;color:var(--v,var(--ink-soft))}
-.enblanco{font-style:italic;color:var(--ink-faint);margin:0;border-left:2px solid var(--rule);padding-left:1rem}
-.enblanco small{display:block;font-style:normal;font-size:.85rem;margin-top:.3rem}
-.cap.breve{padding-top:clamp(2.5rem,6vw,4rem);padding-bottom:clamp(2.5rem,6vw,4rem)}
-.cap.breve h2{font-size:clamp(1.6rem,3.5vw,2.1rem);margin-bottom:1.1rem}
+.parte-abre{padding:clamp(4rem,10vw,7rem) 0 clamp(2rem,5vw,3rem)}
+.parte-abre .k{font-family:var(--sans);color:var(--fg-2);font-size:.95rem;margin:0 0 .6rem}
+.parte-abre h2{font-family:var(--sans);font-size:clamp(2.2rem,5.5vw,3.6rem);letter-spacing:-.035em;line-height:1;font-weight:700;margin:0 0 1rem}
+.parte-abre p{color:var(--fg-2);max-width:32rem;margin:0}
+.cap{padding:clamp(2.5rem,6vw,4rem) 0}
+.cap + .cap{border-top:1px solid var(--line)}
+.cap .k{font-family:var(--sans);font-size:.9rem;color:var(--fg-3);margin:0 0 .5rem}
+.cap h2{font-family:var(--sans);font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.03em;line-height:1.1;font-weight:700;margin:0 0 1rem}
+.autor{display:flex;align-items:center;gap:.6rem;font-family:var(--sans);font-size:.9rem;color:var(--fg-2);margin:0 0 2rem}
+.autor .av{width:1.6rem;height:1.6rem;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:600;font-size:.7rem}
+.autor .av.n{background:var(--nohemi)} .autor .av.g{background:var(--greg)}
+.autor .dos{display:flex}
+.autor .dos .av + .av{margin-left:-.45rem;box-shadow:0 0 0 2px var(--bg)}
+.cap p{margin:0 0 1.35em;text-wrap:pretty}
+.cap .pregunta{font-size:clamp(1.35rem,2.6vw,1.65rem);line-height:1.35;font-weight:400;letter-spacing:-.01em;margin-bottom:1.4rem}
+.habla{display:flex;align-items:center;gap:.5rem;font-family:var(--sans);font-size:.85rem;color:var(--fg-2);margin:2.4rem 0 .9rem}
+.habla::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--v)}
+.vacio{border-left:3px solid var(--line);padding:.2rem 0 .2rem 1rem;color:var(--fg-2);margin:0}
+.vacio small{display:block;font-family:var(--sans);font-size:.85rem;color:var(--fg-3);margin-top:.35rem}
 
-/* chapter nav */
-.nav{display:flex;justify-content:space-between;gap:1rem;margin-top:3.5rem;padding-top:1rem;border-top:1px solid var(--rule);font-size:.92rem}
-.nav a{text-decoration:none;color:var(--ink-soft);max-width:48%}
-.nav a:hover{color:var(--ink)}
-.nav small{display:block;font-style:italic;color:var(--ink-faint)}
-.nav .sig{text-align:right;margin-left:auto}
+/* notebook inset (how notes/diary entries are woven in) */
+.cuaderno{margin:2rem 0;padding:1.4rem 1.5rem;background:var(--bg-2);border-radius:12px;border-left:3px solid var(--v,var(--fg-3))}
+.cuaderno .de{font-family:var(--sans);font-size:.82rem;color:var(--fg-2);margin:0 0 .8rem;display:flex;gap:.5rem;flex-wrap:wrap}
+.cuaderno .de b{font-weight:600;color:var(--fg)}
+.cuaderno p{font-size:1.05rem;line-height:1.55;margin:0 0 .8em}
+.cuaderno p:last-child{margin-bottom:0}
+.cuaderno .tachado{text-decoration:line-through;color:var(--fg-3)}
 
-/* epigraph + colophon */
-.epigrafe{text-align:center;padding-top:clamp(5rem,14vw,10rem);padding-bottom:clamp(5rem,14vw,10rem)}
-.epigrafe blockquote{font-family:"Cormorant Garamond",serif;font-size:clamp(1.5rem,3.4vw,2.1rem);line-height:1.35;margin:0 auto 1rem;max-width:30rem;font-weight:300}
-.epigrafe cite{font-style:italic;color:var(--ink-soft);font-size:1rem}
-.colofon{text-align:center;color:var(--ink-faint);font-size:.88rem;font-style:italic;padding-bottom:4rem}
-.colofon .orn{width:2.5rem;height:1px;background:var(--rule);margin:0 auto 1.2rem}
+.sig{display:flex;justify-content:space-between;gap:1rem;margin-top:2.5rem;font-family:var(--sans);font-size:.9rem}
+.sig a{text-decoration:none;color:var(--fg-2);padding:.6rem .9rem;border:1px solid var(--line);border-radius:999px}
+.sig a:hover{color:var(--fg);border-color:var(--fg-2)}
+.sig .d{margin-left:auto}
+
+/* footer */
+footer{border-top:1px solid var(--line);background:var(--bg-2);margin-top:3rem;font-family:var(--sans)}
+footer .cols{max-width:64rem;margin:0 auto;padding:3.5rem var(--gutter) 2.5rem;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem}
+footer h3{font-size:.85rem;font-weight:600;margin:0 0 .8rem;color:var(--fg-2)}
+footer p{font-family:var(--serif);margin:0;font-size:1rem;color:var(--fg-2);max-width:26rem}
+footer .titulo{font-family:var(--sans);font-size:1.3rem;font-weight:700;letter-spacing:-.02em;color:var(--fg);margin:0 0 .5rem}
+footer ul{list-style:none;margin:0;padding:0;font-size:.95rem}
+footer li{margin:.35rem 0}
+footer li a{text-decoration:none;color:var(--fg-2)}
+footer li a:hover{color:var(--fg)}
+footer .pie{border-top:1px solid var(--line)}
+footer .pie .in{max-width:64rem;margin:0 auto;padding:1.2rem var(--gutter);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.82rem;color:var(--fg-3)}
+footer .pie .voces-leyenda{display:flex;gap:1rem;align-items:center}
+footer .pie .voces-leyenda span{display:inline-flex;align-items:center;gap:.4rem}
+@media (max-width:720px){ footer .cols{grid-template-columns:1fr;gap:2rem} }
 </style>
 </head>
 <body>
-<div id="hilo" aria-hidden="true"></div>
 
-<header class="cubierta" id="portada">
-  <div class="autores">Nohemi &amp; Greg</div>
-  <div class="centro">
-    <h1>Destino</h1>
-    <div class="orn"></div>
-    <p class="sub">La historia de cómo Dios nos trajo hasta aquí</p>
+<div class="barra">
+  <div class="in">
+    <a class="logo" href="#inicio">Destino</a>
+    <nav aria-label="Secciones">
+      <a href="#indice">Índice</a>
+      <a href="#prologo">Prólogo</a>
+      <a href="#parte1">Parte I</a>
+      <a href="#parte2">Parte II</a>
+      <a href="#parte3">Parte III</a>
+    </nav>
+    <button class="tema" id="tema" type="button" aria-label="Cambiar entre modo claro y oscuro" title="Modo claro / oscuro">
+      <svg class="sol" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="luna" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+    <div id="progreso" aria-hidden="true"></div>
   </div>
-  <a class="abrir" href="#indice">Abrir el libro</a>
+</div>
+
+<header class="hero" id="inicio">
+  <div class="fondo" aria-hidden="true"></div>
+  <!-- Pon la foto de portada en materiales/fotos/portada.jpg (apaisada, mínimo 2000px de ancho). Si no existe, se muestra el fondo. -->
+  <img src="materiales/fotos/portada.jpg" alt="" onerror="this.remove()">
+  <div class="velo" aria-hidden="true"></div>
+  <div class="in">
+    <h1>Dos caminos, un destino</h1>
+    <p>La historia de Nohemi y Greg: de dónde venía cada uno, cómo se cruzaron, y lo que hoy entienden que Dios estaba haciendo todo ese tiempo.</p>
+    <div class="meta">
+      <a class="btn" href="#prologo">Empezar a leer</a>
+      <span>Escrito por Nohemi y Greg</span>
+      <span>Borrador privado</span>
+    </div>
+  </div>
 </header>
 
-<section class="pagina epigrafe">
+<section class="epi">
   <blockquote>Sabemos que a los que aman a Dios, todas las cosas les ayudan a bien.</blockquote>
   <cite>Romanos 8:28</cite>
 </section>
 
-<nav class="pagina indice" id="indice" aria-label="Índice">
+<section class="wrap sec toc" id="indice">
   <h2>Índice</h2>
+  <p class="lead">Tres partes. Los puntos de color dicen quién habla en cada capítulo.</p>
+
   <ol>
-    <li><a href="#prologo"><span class="n"></span><span class="t">Prólogo</span><span class="marca"><i class="mn"></i><i class="mg"></i></span><span class="leader"></span></a></li>
+    <li class="ok"><a href="#prologo"><span class="n"></span><span class="t">Prólogo<small>Por qué contamos esto</small></span><span class="r"><span class="voces"><i class="vn"></i><i class="vg"></i></span><span class="e">Borrador</span></span></a></li>
   </ol>
 
-  <div class="parte">Primera parte <small>Dos caminos</small></div>
+  <div class="parte"><b>Primera parte</b><span>Dos caminos</span></div>
   <ol>
-    <li class="pend"><a href="#cap1"><span class="n">1</span><span class="t">De dónde vengo</span><span class="marca"><i class="mn"></i></span><span class="leader"></span><span class="q">en escritura</span></a></li>
-    <li class="pend"><a href="#cap2"><span class="n">2</span><span class="t">Las luchas</span><span class="marca"><i class="mn"></i></span><span class="leader"></span><span class="q">en escritura</span></a></li>
-    <li class="pend"><a href="#cap3"><span class="n">3</span><span class="t">El encuentro con Dios</span><span class="marca"><i class="mn"></i></span><span class="leader"></span><span class="q">en escritura</span></a></li>
-    <li class="pend"><a href="#cap4"><span class="n">4</span><span class="t">El desierto</span><span class="marca"><i class="mn"></i></span><span class="leader"></span><span class="q">en escritura</span></a></li>
-    <li class="pend"><a href="#cap5"><span class="n">5</span><span class="t">Mi camino</span><span class="marca"><i class="mg"></i></span><span class="leader"></span><span class="q">en escritura</span></a></li>
-    <li class="pend"><a href="#cap6"><span class="n">6</span><span class="t">Lo que tuve que soltar</span><span class="marca"><i class="mg"></i></span><span class="leader"></span><span class="q">en escritura</span></a></li>
+    <li><a href="#cap1"><span class="n">1</span><span class="t">De dónde vengo</span><span class="r"><span class="voces"><i class="vn"></i></span><span class="e">En escritura</span></span></a></li>
+    <li><a href="#cap2"><span class="n">2</span><span class="t">Las luchas</span><span class="r"><span class="voces"><i class="vn"></i></span><span class="e">En escritura</span></span></a></li>
+    <li><a href="#cap3"><span class="n">3</span><span class="t">El encuentro con Dios</span><span class="r"><span class="voces"><i class="vn"></i></span><span class="e">En escritura</span></span></a></li>
+    <li><a href="#cap4"><span class="n">4</span><span class="t">El desierto</span><span class="r"><span class="voces"><i class="vn"></i></span><span class="e">En escritura</span></span></a></li>
+    <li><a href="#cap5"><span class="n">5</span><span class="t">Mi camino</span><span class="r"><span class="voces"><i class="vg"></i></span><span class="e">En escritura</span></span></a></li>
+    <li><a href="#cap6"><span class="n">6</span><span class="t">Lo que tuve que soltar</span><span class="r"><span class="voces"><i class="vg"></i></span><span class="e">En escritura</span></span></a></li>
+    <li class="ok"><a href="#cap7"><span class="n">7</span><span class="t">Orando por alguien que no conocía</span><span class="r"><span class="voces"><i class="vg"></i></span><span class="e">Borrador</span></span></a></li>
   </ol>
 
-  <div class="parte">Segunda parte <small>El encuentro</small></div>
+  <div class="parte"><b>Segunda parte</b><span>El encuentro</span></div>
   <ol>
-    <li class="pend"><a href="#cap7"><span class="n">7</span><span class="t">La célula: cómo empezó</span><span class="marca"><i class="mn"></i><i class="mg"></i></span><span class="leader"></span><span class="q">en escritura</span></a></li>
-    <li class="pend"><a href="#cap8"><span class="n">8</span><span class="t">La amistad con propósito</span><span class="marca"><i class="mn"></i><i class="mg"></i></span><span class="leader"></span><span class="q">en escritura</span></a></li>
-    <li class="pend"><a href="#cap9"><span class="n">9</span><span class="t">El momento difícil</span><span class="marca"><i class="mn"></i><i class="mg"></i></span><span class="leader"></span><span class="q">en escritura</span></a></li>
-    <li class="pend"><a href="#cap10"><span class="n">10</span><span class="t">La confirmación</span><span class="marca"><i class="mn"></i><i class="mg"></i></span><span class="leader"></span><span class="q">en escritura</span></a></li>
+    <li><a href="#cap8"><span class="n">8</span><span class="t">La célula: cómo empezó</span><span class="r"><span class="voces"><i class="vn"></i><i class="vg"></i></span><span class="e">En escritura</span></span></a></li>
+    <li><a href="#cap9"><span class="n">9</span><span class="t">La amistad con propósito</span><span class="r"><span class="voces"><i class="vn"></i><i class="vg"></i></span><span class="e">En escritura</span></span></a></li>
+    <li><a href="#cap10"><span class="n">10</span><span class="t">El momento difícil</span><span class="r"><span class="voces"><i class="vn"></i><i class="vg"></i></span><span class="e">En escritura</span></span></a></li>
+    <li><a href="#cap11"><span class="n">11</span><span class="t">La confirmación</span><span class="r"><span class="voces"><i class="vn"></i><i class="vg"></i></span><span class="e">En escritura</span></span></a></li>
   </ol>
 
-  <div class="parte">Tercera parte <small>Todo para bien</small></div>
+  <div class="parte"><b>Tercera parte</b><span>Todo para bien</span></div>
   <ol>
-    <li class="pend"><a href="#cap11"><span class="n">11</span><span class="t">Lo que ahora entendemos</span><span class="marca"><i class="mn"></i><i class="mg"></i></span><span class="leader"></span><span class="q">en escritura</span></a></li>
-    <li class="pend"><a href="#cap12"><span class="n">12</span><span class="t">Lo que aprendimos</span><span class="marca"><i class="mn"></i><i class="mg"></i></span><span class="leader"></span><span class="q">en escritura</span></a></li>
-    <li class="pend"><a href="#cap13"><span class="n">13</span><span class="t">Cartas a los que vienen</span><span class="marca"><i class="mn"></i><i class="mg"></i></span><span class="leader"></span><span class="q">en escritura</span></a></li>
+    <li><a href="#cap12"><span class="n">12</span><span class="t">Lo que ahora entendemos</span><span class="r"><span class="voces"><i class="vn"></i><i class="vg"></i></span><span class="e">En escritura</span></span></a></li>
+    <li><a href="#cap13"><span class="n">13</span><span class="t">Lo que aprendimos</span><span class="r"><span class="voces"><i class="vn"></i><i class="vg"></i></span><span class="e">En escritura</span></span></a></li>
+    <li><a href="#cap14"><span class="n">14</span><span class="t">Cartas a los que vienen</span><span class="r"><span class="voces"><i class="vn"></i><i class="vg"></i></span><span class="e">En escritura</span></span></a></li>
+    <li><a href="#epilogo"><span class="n"></span><span class="t">Epílogo</span><span class="r"><span class="voces"><i class="vn"></i><i class="vg"></i></span><span class="e">Al final</span></span></a></li>
   </ol>
-
-  <ol style="margin-top:1.4rem">
-    <li class="pend"><a href="#epilogo"><span class="n"></span><span class="t">Epílogo</span><span class="marca"><i class="mn"></i><i class="mg"></i></span><span class="leader"></span><span class="q">se escribe al final</span></a></li>
-  </ol>
-</nav>
+</section>
 
 <!-- PRÓLOGO -->
-<article class="pagina cap" id="prologo" style="--v:var(--nohemi)">
-  <p class="cn">Prólogo</p>
+<article class="wrap cap sec" id="prologo">
+  <p class="k">Prólogo</p>
   <h2>Por qué contamos esto</h2>
-  <p class="voz dos">Nohemi y Greg</p>
-  <div class="texto">
-    <span class="hablante">Nohemi</span>
-    <p class="pregunta">¿Crees en el destino?<br>¿Alguna vez has pensado si Dios tiene a la persona correcta en tu vida?</p>
-    <p>Queremos contarte nuestra historia y esperamos que sea de bendición en tu vida. Fuera de las diferentes opiniones que cada uno de nosotros podamos tener acerca del destino sentimental.</p>
-    <p>No queremos quedarnos con nuestra historia solo para nosotros, sino que esto inició como un legado, pero ahora, yo, Nohemí, siento que Greg y yo podemos ser de inspiración para ti, querido lector.</p>
-    <span class="hablante" style="--v:var(--greg)">Greg</span>
-    <p class="enblanco">Greg todavía está escribiendo su parte del prólogo.</p>
-  </div>
-  <nav class="nav"><a href="#indice">Índice</a><a class="sig" href="#parte1"><small>Primera parte</small>Dos caminos</a></nav>
+  <div class="autor"><span class="dos"><span class="av n">N</span><span class="av g">G</span></span>Nohemi y Greg</div>
+
+  <p class="habla" style="--v:var(--nohemi)">Nohemi</p>
+  <p class="pregunta">¿Crees en el destino? ¿Alguna vez has pensado si Dios tiene a la persona correcta en tu vida?</p>
+  <p>Queremos contarte nuestra historia y esperamos que sea de bendición en tu vida. Fuera de las diferentes opiniones que cada uno de nosotros podamos tener acerca del destino sentimental.</p>
+  <p>No queremos quedarnos con nuestra historia solo para nosotros, sino que esto inició como un legado, pero ahora, yo, Nohemí, siento que Greg y yo podemos ser de inspiración para ti, querido lector.</p>
+
+  <p class="habla" style="--v:var(--greg)">Greg</p>
+  <p class="vacio">Greg todavía está escribiendo su parte del prólogo.</p>
+
+  <nav class="sig" aria-label="Siguiente"><a href="#indice">Índice</a><a class="d" href="#parte1">Primera parte: Dos caminos</a></nav>
 </article>
 
 <!-- PARTE I -->
-<section class="pagina apertura" id="parte1">
-  <p class="num">I</p>
+<section class="wrap parte-abre" id="parte1">
+  <p class="k">Primera parte</p>
   <h2>Dos caminos</h2>
   <p>Quiénes éramos antes de conocernos. Cada quien cuenta su historia sin saber todavía que iban a cruzarse.</p>
 </section>
 
-<article class="pagina cap breve" id="cap1" style="--v:var(--nohemi)">
-  <p class="cn">Capítulo 1</p><h2>De dónde vengo</h2><p class="voz">Nohemi</p>
-  <p class="enblanco">Este capítulo todavía se está escribiendo.<small>Familia, lugar, infancia. Lo que la formó antes de que ella decidiera nada.</small></p>
-</article>
-<article class="pagina cap breve" id="cap2" style="--v:var(--nohemi)">
-  <p class="cn">Capítulo 2</p><h2>Las luchas</h2><p class="voz">Nohemi</p>
-  <p class="enblanco">Este capítulo todavía se está escribiendo.<small>Las batallas que peleó, las que perdió, las que la marcaron.</small></p>
-</article>
-<article class="pagina cap breve" id="cap3" style="--v:var(--nohemi)">
-  <p class="cn">Capítulo 3</p><h2>El encuentro con Dios</h2><p class="voz">Nohemi</p>
-  <p class="enblanco">Este capítulo todavía se está escribiendo.<small>El día en que la fe dejó de ser costumbre y se volvió suya.</small></p>
-</article>
-<article class="pagina cap breve" id="cap4" style="--v:var(--nohemi)">
-  <p class="cn">Capítulo 4</p><h2>El desierto</h2><p class="voz">Nohemi</p>
-  <p class="enblanco">Este capítulo todavía se está escribiendo.<small>La espera. Lo que Dios formó en ella mientras parecía que no pasaba nada.</small></p>
-</article>
-<article class="pagina cap breve" id="cap5" style="--v:var(--greg)">
-  <p class="cn">Capítulo 5</p><h2>Mi camino</h2><p class="voz">Greg</p>
-  <p class="enblanco">Este capítulo todavía se está escribiendo.<small>De dónde viene, su fe, lo que estaba construyendo cuando llegó a la célula.</small></p>
-</article>
-<article class="pagina cap breve" id="cap6" style="--v:var(--greg)">
-  <p class="cn">Capítulo 6</p><h2>Lo que tuve que soltar</h2><p class="voz">Greg</p>
-  <p class="enblanco">Este capítulo todavía se está escribiendo.<small>Lo que tuvo que terminar para poder llegar limpio a esta historia.</small></p>
-  <nav class="nav"><a href="#parte1"><small>Primera parte</small>Dos caminos</a><a class="sig" href="#parte2"><small>Segunda parte</small>El encuentro</a></nav>
-</article>
+<article class="wrap cap" id="cap1"><p class="k">Capítulo 1</p><h2>De dónde vengo</h2><div class="autor"><span class="av n">N</span>Nohemi</div>
+  <p class="vacio">Este capítulo todavía se está escribiendo.<small>Familia, lugar, infancia. Lo que la formó antes de que ella decidiera nada.</small></p></article>
+<article class="wrap cap" id="cap2"><p class="k">Capítulo 2</p><h2>Las luchas</h2><div class="autor"><span class="av n">N</span>Nohemi</div>
+  <p class="vacio">Este capítulo todavía se está escribiendo.<small>Las batallas que peleó, las que perdió, las que la marcaron.</small></p></article>
+<article class="wrap cap" id="cap3"><p class="k">Capítulo 3</p><h2>El encuentro con Dios</h2><div class="autor"><span class="av n">N</span>Nohemi</div>
+  <p class="vacio">Este capítulo todavía se está escribiendo.<small>El día en que la fe dejó de ser costumbre y se volvió suya.</small></p></article>
+<article class="wrap cap" id="cap4"><p class="k">Capítulo 4</p><h2>El desierto</h2><div class="autor"><span class="av n">N</span>Nohemi</div>
+  <p class="vacio">Este capítulo todavía se está escribiendo.<small>La espera. Lo que Dios formó en ella mientras parecía que no pasaba nada.</small></p></article>
+<article class="wrap cap" id="cap5"><p class="k">Capítulo 5</p><h2>Mi camino</h2><div class="autor"><span class="av g">G</span>Greg</div>
+  <p class="vacio">Este capítulo todavía se está escribiendo.<small>De dónde viene, su fe, lo que estaba construyendo cuando llegó a la célula.</small></p></article>
+<article class="wrap cap" id="cap6"><p class="k">Capítulo 6</p><h2>Lo que tuve que soltar</h2><div class="autor"><span class="av g">G</span>Greg</div>
+  <p class="vacio">Este capítulo todavía se está escribiendo.<small>Lo que tuvo que terminar para poder llegar limpio a esta historia.</small></p></article>
+
+<article class="wrap cap" id="cap7"><p class="k">Capítulo 7</p><h2>Orando por alguien que no conocía</h2><div class="autor"><span class="av g">G</span>Greg</div>
+  <p class="vacio">Este capítulo todavía se está escribiendo.<small>Entre 2016 y 2018, Greg escribió oraciones por una esposa que no conocía. Diez años después, Nohemi preguntaría: «¿en dónde ha estado Greg todo este tiempo?». Este capítulo es la respuesta.</small></p>
+  <aside class="cuaderno" style="--v:var(--greg)">
+    <p class="de"><b>Del cuaderno de Greg</b><span>25 de diciembre de 2016, 7:45 PM</span><span>Escrito en inglés; traducción de trabajo</span></p>
+    <p>Señor, estoy tan entusiasmado por conocer a mi esposa. Sé que está en tus manos y sé que no he sido el mejor administrador. Sé que he fallado a tu tiempo y no he sido obediente, pero estoy cansado de quedarme atrás y de quedarme corto. Señor, estoy listo para poner todo en tus manos y obedecer tus mandatos, para que puedas mostrarme verdad y gracia. No puedo esperar a conocerla, Señor, y no puedo esperar a enamorarme de la persona que me has dado.</p>
+    <p>Te entrego mi corazón para que tú se lo des a ella. Y soy tuyo, Señor. Gracias, Señor, en el nombre de Jesús. Amén.</p>
+  </aside>
+  <aside class="cuaderno" style="--v:var(--greg)">
+    <p class="de"><b>Del cuaderno de Greg</b><span>23 de octubre de 2018</span></p>
+    <p>Declaro esto como una nueva era, en la que empiezo a ver a mis descendientes en mi futuro. Empiezo a orar por el vientre de mi esposa aun antes de conocerla. [...] Ella es madre de sabiduría y maestra de fe. Lleva alegría a donde va. [...] Gracias, Señor, por mi esposa.</p>
+  </aside>
+  <nav class="sig" aria-label="Siguiente"><a href="#parte1">Primera parte</a><a class="d" href="#parte2">Segunda parte: El encuentro</a></nav></article>
 
 <!-- PARTE II -->
-<section class="pagina apertura" id="parte2">
-  <p class="num">II</p>
+<section class="wrap parte-abre" id="parte2">
+  <p class="k">Segunda parte</p>
   <h2>El encuentro</h2>
   <p>Donde los dos caminos se cruzan. Aquí hablamos los dos.</p>
 </section>
 
-<article class="pagina cap breve" id="cap7">
-  <p class="cn">Capítulo 7</p><h2>La célula: cómo empezó</h2><p class="voz dos">Nohemi y Greg</p>
-  <p class="enblanco">Este capítulo todavía se está escribiendo.<small>El primer encuentro, contado dos veces: lo que vio ella y lo que vio él.</small></p>
-</article>
-<article class="pagina cap breve" id="cap8">
-  <p class="cn">Capítulo 8</p><h2>La amistad con propósito</h2><p class="voz dos">Nohemi y Greg</p>
-  <p class="enblanco">Este capítulo todavía se está escribiendo.<small>«Nada existe por casualidad.» Cómo pasaron de conocidos a amigos, y por qué esa amistad fue distinta.</small></p>
-</article>
-<article class="pagina cap breve" id="cap9">
-  <p class="cn">Capítulo 9</p><h2>El momento difícil</h2><p class="voz dos">Nohemi y Greg</p>
-  <p class="enblanco">Este capítulo todavía se está escribiendo.<small>Cuando todo se salió de control: la familia, las indirectas, el «reporte de noticias».</small></p>
-</article>
-<article class="pagina cap breve" id="cap10">
-  <p class="cn">Capítulo 10</p><h2>La confirmación</h2><p class="voz dos">Nohemi y Greg</p>
-  <p class="enblanco">Este capítulo todavía se está escribiendo.<small>Cómo supieron. La paz, las señales, las confirmaciones.</small></p>
-  <nav class="nav"><a href="#parte2"><small>Segunda parte</small>El encuentro</a><a class="sig" href="#parte3"><small>Tercera parte</small>Todo para bien</a></nav>
+<article class="wrap cap" id="cap8"><p class="k">Capítulo 8</p><h2>La célula: cómo empezó</h2><div class="autor"><span class="dos"><span class="av n">N</span><span class="av g">G</span></span>Nohemi y Greg</div>
+  <p class="vacio">Este capítulo todavía se está escribiendo.<small>El primer encuentro, contado dos veces: lo que vio ella y lo que vio él.</small></p></article>
+
+<article class="wrap cap" id="cap9"><p class="k">Capítulo 9</p><h2>La amistad con propósito</h2><div class="autor"><span class="dos"><span class="av n">N</span><span class="av g">G</span></span>Nohemi y Greg</div>
+  <p class="vacio">Este capítulo todavía se está escribiendo.<small>Cómo pasaron de conocidos a amigos, y por qué esa amistad fue distinta.</small></p>
+  <!-- Así se tejen las notas y entradas de diario dentro de un capítulo: -->
+  <aside class="cuaderno" style="--v:var(--nohemi)">
+    <p class="de"><b>Del cuaderno de Nohemi</b><span>8 de octubre de 2026</span></p>
+    <p>Mi pregunta es: ¿en dónde ha estado Greg todo este tiempo?</p>
+    <p>Sabe, siempre le digo a mis nuevas amistades: nada existe por casualidad. Y si llegaste a mi vida es con un propósito. Tal vez aún no descubrimos el porqué y para qué, pero es por X razón. Tal vez llegaste para enseñarme algo que necesito aprender. Tal vez nuestra amistad solo dure poco tiempo. Tal vez <span class="tachado">así como llegaste, así te vas</span>.</p>
+  </aside>
 </article>
 
+<article class="wrap cap" id="cap10"><p class="k">Capítulo 10</p><h2>El momento difícil</h2><div class="autor"><span class="dos"><span class="av n">N</span><span class="av g">G</span></span>Nohemi y Greg</div>
+  <p class="vacio">Este capítulo todavía se está escribiendo.<small>Cuando todo se salió de control: la familia, las indirectas, el «reporte de noticias».</small></p></article>
+<article class="wrap cap" id="cap11"><p class="k">Capítulo 11</p><h2>La confirmación</h2><div class="autor"><span class="dos"><span class="av n">N</span><span class="av g">G</span></span>Nohemi y Greg</div>
+  <p class="vacio">Este capítulo todavía se está escribiendo.<small>Cómo supieron. La paz, las señales, las confirmaciones.</small></p>
+  <nav class="sig" aria-label="Siguiente"><a href="#parte2">Segunda parte</a><a class="d" href="#parte3">Tercera parte: Todo para bien</a></nav></article>
+
 <!-- PARTE III -->
-<section class="pagina apertura" id="parte3">
-  <p class="num">III</p>
+<section class="wrap parte-abre" id="parte3">
+  <p class="k">Tercera parte</p>
   <h2>Todo para bien</h2>
   <p>Mirando hacia atrás, lo que hoy vemos que Dios estaba haciendo. Mirando hacia adelante, lo que queremos dejar.</p>
 </section>
 
-<article class="pagina cap breve" id="cap11">
-  <p class="cn">Capítulo 11</p><h2>Lo que ahora entendemos</h2><p class="voz dos">Nohemi y Greg</p>
-  <p class="enblanco">Este capítulo todavía se está escribiendo.<small>Cómo las luchas de la primera parte preparaban el encuentro de la segunda.</small></p>
-</article>
-<article class="pagina cap breve" id="cap12">
-  <p class="cn">Capítulo 12</p><h2>Lo que aprendimos</h2><p class="voz dos">Nohemi y Greg</p>
-  <p class="enblanco">Este capítulo todavía se está escribiendo.<small>Lo que quisieran que sus hijos sepan de memoria.</small></p>
-</article>
-<article class="pagina cap breve" id="cap13">
-  <p class="cn">Capítulo 13</p><h2>Cartas a los que vienen</h2><p class="voz dos">Cada uno escribe la suya</p>
-  <p class="enblanco">Este capítulo todavía se está escribiendo.<small>A los hijos que aún no nacen, a la familia, a quien lea esto en treinta años.</small></p>
-  <nav class="nav"><a href="#parte3"><small>Tercera parte</small>Todo para bien</a><a class="sig" href="#epilogo">Epílogo</a></nav>
-</article>
+<article class="wrap cap" id="cap12"><p class="k">Capítulo 12</p><h2>Lo que ahora entendemos</h2><div class="autor"><span class="dos"><span class="av n">N</span><span class="av g">G</span></span>Nohemi y Greg</div>
+  <p class="vacio">Este capítulo todavía se está escribiendo.<small>Cómo las luchas de la primera parte preparaban el encuentro de la segunda.</small></p></article>
+<article class="wrap cap" id="cap13"><p class="k">Capítulo 13</p><h2>Lo que aprendimos</h2><div class="autor"><span class="dos"><span class="av n">N</span><span class="av g">G</span></span>Nohemi y Greg</div>
+  <p class="vacio">Este capítulo todavía se está escribiendo.<small>Lo que quisieran que sus hijos sepan de memoria.</small></p></article>
+<article class="wrap cap" id="cap14"><p class="k">Capítulo 14</p><h2>Cartas a los que vienen</h2><div class="autor"><span class="dos"><span class="av n">N</span><span class="av g">G</span></span>Cada uno escribe la suya</div>
+  <p class="vacio">Este capítulo todavía se está escribiendo.<small>A los hijos que aún no nacen, a la familia, a quien lea esto en treinta años.</small></p></article>
+<article class="wrap cap" id="epilogo"><p class="k">Epílogo</p><h2>Donde estamos hoy</h2><div class="autor"><span class="dos"><span class="av n">N</span><span class="av g">G</span></span>Nohemi y Greg</div>
+  <p class="vacio">Se escribe al final, cuando todo lo demás esté listo.</p>
+  <nav class="sig" aria-label="Siguiente"><a href="#indice">Volver al índice</a><a class="d" href="#inicio">Subir</a></nav></article>
 
-<article class="pagina cap breve" id="epilogo">
-  <p class="cn">Epílogo</p><h2>Donde estamos hoy</h2><p class="voz dos">Nohemi y Greg</p>
-  <p class="enblanco">Se escribe al final, cuando todo lo demás esté listo.</p>
-  <nav class="nav"><a href="#indice">Volver al índice</a><a class="sig" href="#portada">Portada</a></nav>
-</article>
-
-<footer class="pagina colofon">
-  <div class="orn"></div>
-  Borrador privado en construcción. Escrito por Nohemi y Greg para su familia y para los que vienen.
+<footer>
+  <div class="cols">
+    <div>
+      <p class="titulo">Dos caminos, un destino</p>
+      <p>Un libro escrito a dos voces por Nohemi y Greg, como legado para su familia y para los que vienen. Es una historia real, contada desde la fe, todavía en construcción.</p>
+    </div>
+    <div>
+      <h3>El libro</h3>
+      <ul>
+        <li><a href="#prologo">Prólogo</a></li>
+        <li><a href="#parte1">Primera parte: Dos caminos</a></li>
+        <li><a href="#parte2">Segunda parte: El encuentro</a></li>
+        <li><a href="#parte3">Tercera parte: Todo para bien</a></li>
+        <li><a href="#epilogo">Epílogo</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Los autores</h3>
+      <ul>
+        <li><span class="voces"><i class="vn"></i></span>&nbsp; Nohemi</li>
+        <li><span class="voces"><i class="vg"></i></span>&nbsp; Greg</li>
+      </ul>
+      <h3 style="margin-top:1.4rem">Versículo del libro</h3>
+      <ul><li>Romanos 8:28</li></ul>
+    </div>
+  </div>
+  <div class="pie">
+    <div class="in">
+      <span>Borrador privado, 2026. No indexado.</span>
+      <span>Hecho con cariño, un capítulo a la vez.</span>
+    </div>
+  </div>
 </footer>
 
 <script>
 (function(){
-  var h=document.getElementById('hilo'),d=document.documentElement;
-  function u(){var m=d.scrollHeight-d.clientHeight;h.style.width=(m>0?(d.scrollTop/m*100):0)+'%';}
+  var root=document.documentElement,btn=document.getElementById('tema'),KEY='destino-tema';
+  try{var s=localStorage.getItem(KEY);if(s==='dark'||s==='light')root.setAttribute('data-theme',s);}catch(e){}
+  btn.addEventListener('click',function(){
+    var dark=root.getAttribute('data-theme')==='dark'||(!root.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);
+    var next=dark?'light':'dark';root.setAttribute('data-theme',next);
+    try{localStorage.setItem(KEY,next);}catch(e){}
+  });
+  var p=document.getElementById('progreso'),d=root;
+  function u(){var m=d.scrollHeight-d.clientHeight;p.style.width=(m>0?(d.scrollTop/m*100):0)+'%';}
   addEventListener('scroll',u,{passive:true});u();
 })();
 </script>

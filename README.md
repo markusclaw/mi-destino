@@ -1,4 +1,4 @@
-# Destino
+# Dos caminos, un destino
 
 Libro de Nohemi y Greg. La historia de los dos caminos que nos trajeron hasta aquí,
 escrita como legado para nuestra familia, nuestros futuros hijos, y quien venga después.
@@ -28,9 +28,22 @@ escrita como legado para nuestra familia, nuestros futuros hijos, y quien venga 
 - Primera persona. Cada quien escribe su parte.
 - Nohemi lleva la Parte I; la Parte II se escribe a dos voces.
 
+## Cómo tejemos las notas y el diario
+
+Nohemi tiene muchas notas y entradas de diario. No se reescriben: se **tejen**.
+
+1. Cada nota o entrada se guarda tal cual en `materiales/cuaderno/` con el nombre `AAAA-MM-DD-autor-tema.md` y una cabecera corta (fecha, autor, a qué capítulo apunta, cómo se usa).
+2. En el capítulo, la nota entra como un **recuadro "Del cuaderno de…"** con su fecha, en la voz original, en medio del texto narrado. El capítulo cuenta; el cuaderno muestra.
+3. Tres usos posibles para cada nota: `cita` (un fragmento dentro del capítulo), `recuadro` (la entrada casi completa, como inserto), `fondo` (solo informa lo que se narra, no se muestra).
+4. `materiales/cuaderno/INDICE.md` lista todas las entradas y a qué capítulo van. Es el mapa del tejido.
+
+Ejemplo ya montado: la carta del 8 de octubre aparece como recuadro en el capítulo 8 de `index.html`.
+
 ## Pendientes
-- Título: DESTINO (decidido). Falta el subtítulo.
+- Título: "Dos caminos, un destino" (nombre corto DESTINO).
 - Elegir versión bíblica para todo el libro (RVR1960 o NVI).
 - Greg: párrafo del prólogo.
 - Nohemi: ¿la carta del 8 de octubre continúa? Falta el final.
 - Primer recuerdo de la célula (los dos).
+- Greg: ¿qué pasaba en octubre de 2018? ("dolor profundo" en la nota del 22 oct). Y revisar las traducciones de sus oraciones.
+- Greg: escena de Navidad 2016 para abrir el capítulo 7.
