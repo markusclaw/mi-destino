@@ -25,7 +25,19 @@
 
 ## Borrador
 
-_(Escribe aquí. Sugerencia: abre con la escena de 2016, inserta la oración completa como recuadro, y cierra con la pregunta de Nohemi de 2026.)_
+[[pendiente: Este capítulo todavía se está escribiendo. Entre 2016 y 2018, Greg escribió oraciones por una esposa que no conocía. Diez años después, Nohemi preguntaría: «¿en dónde ha estado Greg todo este tiempo?». Este capítulo es la respuesta.]]
+
+::: cuaderno Greg | 25 de diciembre de 2016, 7:45 PM | Escrito en inglés; traducción de trabajo
+Señor, estoy tan entusiasmado por conocer a mi esposa. Sé que está en tus manos y sé que no he sido el mejor administrador. Sé que he fallado a tu tiempo y no he sido obediente, pero estoy cansado de quedarme atrás y de quedarme corto. Señor, estoy listo para poner todo en tus manos y obedecer tus mandatos, para que puedas mostrarme verdad y gracia. No puedo esperar a conocerla, Señor, y no puedo esperar a enamorarme de la persona que me has dado.
+
+Te entrego mi corazón para que tú se lo des a ella. Y soy tuyo, Señor. Gracias, Señor, en el nombre de Jesús. Amén.
+:::
+
+::: cuaderno Greg | 23 de octubre de 2018
+Declaro esto como una nueva era, en la que empiezo a ver a mis descendientes en mi futuro. Empiezo a orar por el vientre de mi esposa aun antes de conocerla. [...] Ella es madre de sabiduría y maestra de fe. Lleva alegría a donde va. [...] Gracias, Señor, por mi esposa.
+:::
+
+_(Sugerencia: abre con la escena de 2016, deja la oración completa como recuadro, y cierra con la pregunta de Nohemi de 2026.)_
 
 ## Notas y recuerdos sueltos
 

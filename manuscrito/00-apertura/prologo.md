@@ -1,28 +1,36 @@
-# Prólogo: por qué contamos esto
+# Por qué contamos esto
 
-- **Voz:** ambos (Nohemi abre; Greg puede añadir un párrafo)
+- **Voz:** Nohemi y Greg
 - **Estado:** borrador
 - **Dónde va:** ver `LIBRO.md`
 
-> La apertura del libro. Nohemi ya escribió un primer borrador (abajo). Está casi listo:
-> es la voz correcta y hace las preguntas correctas.
+> La apertura del libro. Nohemi ya escribió un primer borrador. Está casi listo:
+> es la voz correcta y hace las preguntas correctas. Falta el párrafo de Greg.
 
-## Borrador de Nohemi (texto original, sin editar)
+## Borrador
 
-¿Crees en el destino?
-¿Alguna vez has pensado si Dios tiene a la persona correcta en tu vida?
+— Nohemi
+
+!! ¿Crees en el destino? ¿Alguna vez has pensado si Dios tiene a la persona correcta en tu vida?
 
 Queremos contarte nuestra historia y esperamos que sea de bendición en tu vida. Fuera de las diferentes opiniones que cada uno de nosotros podamos tener acerca del destino sentimental.
-No queremos quedarnos con nuestra historia solo para nosotros, sino que esto inició como un legado, pero ahora, yo, Nohemí siento que Greg y yo podemos ser de inspiración para ti querido lector.
+
+No queremos quedarnos con nuestra historia solo para nosotros, sino que esto inició como un legado, pero ahora, yo, Nohemí, siento que Greg y yo podemos ser de inspiración para ti, querido lector.
+
+— Greg
+
+[[pendiente: Greg todavía está escribiendo su parte del prólogo.]]
 
 ## Para completar
 
 - Párrafo de Greg: ¿por qué tú también quieres contar esto? (2–4 oraciones, en tu voz.)
-- Una línea que presente las tres partes del libro: dos caminos, el encuentro, todo para bien.
+- Una línea que presente las cuatro partes: ella, él, la célula, un destino.
 - Decidir si el prólogo cierra con Romanos 8:28 o se guarda para el epílogo.
 
-## Preguntas guía (ya respondidas en su mayoría)
+## Original de Nohemi (sin editar)
 
-- ¿Por qué estamos contando esta historia? ✔ (legado → inspiración)
-- ¿Para quién la escribimos? ✔ (familia, hijos, "querido lector")
-- ¿Qué queremos que el lector sienta al terminar? — pendiente
+Crees en el destino?
+Alguna vez has pensado si Dios tiene a la persona correcta en tu vida?
+
+Queremos contarte nuestra historia y esperamos que sea de bendición en tu vida. Fuera de las diferentes opiniones que cada uno de nosotros podamos tener acerca del destino sentimental.
+No queremos quedarnos con nuestra historia solo para nosotros, sino que esto inició como un legado, pero ahora, yo, Nohemí siento que Greg y yo podemos ser de inspiración para ti querido lector.

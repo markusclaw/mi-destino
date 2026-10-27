@@ -16,7 +16,13 @@
 
 ## Borrador
 
-_(Escribe aquí. No importa si sale desordenado; primero se cuenta, después se pule.)_
+[[pendiente: Este capítulo todavía se está escribiendo. Cómo pasaron de conocidos a amigos, y por qué esa amistad fue distinta.]]
+
+::: cuaderno Nohemi | 8 de octubre de 2026
+Mi pregunta es: ¿en dónde ha estado Greg todo este tiempo?
+
+Sabe, siempre le digo a mis nuevas amistades: nada existe por casualidad. Y si llegaste a mi vida es con un propósito. Tal vez aún no descubrimos el porqué y para qué, pero es por X razón. Tal vez llegaste para enseñarme algo que necesito aprender. Tal vez nuestra amistad solo dure poco tiempo. Tal vez ~~así como llegaste, así te vas~~.
+:::
 
 ## Notas y recuerdos sueltos
 
