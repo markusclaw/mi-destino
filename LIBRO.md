@@ -21,47 +21,52 @@ Estados: `idea` → `preguntas` → `borrador` → `revisado` → `final`
 | 0.2 | `00-apertura/nota-al-lector.md` | Nota a quien lea esto | ambos | preguntas |
 | 0.3 | `00-apertura/prologo.md` | Prólogo: por qué contamos esto | ambos (dos voces) | preguntas |
 
-## Parte I — Dos caminos
-*Quiénes éramos antes de conocernos. Cada quien cuenta su propia historia, sin saber todavía que iban a cruzarse.*
+## Primera parte — Ella
+*El mundo de Nohemi antes de Greg. Sus raíces, sus luchas, su encuentro con Dios, su espera. Dos órbitas cercanas que todavía no se tocan.*
 
 | # | Archivo | Título | Voz | Estado |
 |---|---------|--------|-----|--------|
-| 1 | `01-parte-1-dos-caminos/01-nohemi-de-donde-vengo.md` | De dónde vengo | Nohemi | preguntas |
-| 2 | `01-parte-1-dos-caminos/02-nohemi-las-luchas.md` | Las luchas | Nohemi | preguntas |
-| 3 | `01-parte-1-dos-caminos/03-nohemi-el-encuentro-con-dios.md` | El encuentro con Dios | Nohemi | preguntas |
-| 4 | `01-parte-1-dos-caminos/04-nohemi-el-desierto.md` | El desierto (la espera) | Nohemi | preguntas |
-| 5 | `01-parte-1-dos-caminos/05-greg-mi-camino.md` | Mi camino | Greg | preguntas |
-| 6 | `01-parte-1-dos-caminos/06-greg-lo-que-tuve-que-soltar.md` | Lo que tuve que soltar | Greg | preguntas |
-| 7 | `01-parte-1-dos-caminos/07-greg-orando-por-alguien-que-no-conocia.md` | Orando por alguien que no conocía | Greg | borrador |
+| 1 | `01-parte-1-ella/01-nohemi-de-donde-vengo.md` | De dónde vengo | Nohemi | preguntas |
+| 2 | `01-parte-1-ella/02-nohemi-las-luchas.md` | Las luchas | Nohemi | preguntas |
+| 3 | `01-parte-1-ella/03-nohemi-el-encuentro-con-dios.md` | El encuentro con Dios | Nohemi | preguntas |
+| 4 | `01-parte-1-ella/04-nohemi-el-desierto.md` | El desierto | Nohemi | preguntas |
 
-> Nohemi lleva el peso de esta parte (es su historia la que más quiere contar).
-> Los capítulos de Greg son más cortos y entran como contrapunto, salvo el 7: ahí están las oraciones de 2016–2018 por una esposa que aún no conocía, la bisagra del libro.
-> Si en el camino hace falta un capítulo más, se agrega; la numeración se ajusta al final.
-
-## Parte II — El encuentro
-*Dónde los dos caminos se cruzan. Aquí los capítulos alternan voces o se escriben a dos voces.*
+## Segunda parte — Él
+*El mundo de Greg antes de Nohemi. Buscando lo mismo, en otro lugar, a veces a unos metros. Termina en las oraciones de 2016–2018.*
 
 | # | Archivo | Título | Voz | Estado |
 |---|---------|--------|-----|--------|
-| 8 | `02-parte-2-el-encuentro/08-la-celula.md` | La célula: cómo empezó | ambos | preguntas |
-| 9 | `02-parte-2-el-encuentro/09-la-amistad-con-proposito.md` | La amistad con propósito | ambos | preguntas |
-| 10 | `02-parte-2-el-encuentro/10-el-momento-dificil.md` | El momento difícil | ambos | preguntas |
-| 11 | `02-parte-2-el-encuentro/11-la-confirmacion.md` | La confirmación | ambos | preguntas |
+| 5 | `02-parte-2-el/05-greg-mi-camino.md` | Mi camino | Greg | preguntas |
+| 6 | `02-parte-2-el/06-greg-lo-que-tuve-que-soltar.md` | Lo que tuve que soltar | Greg | preguntas |
+| 7 | `02-parte-2-el/07-greg-orando-por-alguien-que-no-conocia.md` | Orando por alguien que no conocía | Greg | borrador |
 
-## Parte III — Todo para bien
-*Mirando hacia atrás: lo que hoy vemos que Dios estaba haciendo. Y mirando hacia adelante: lo que queremos dejar.*
+> Las dos primeras partes son espejo: cada uno cuenta su historia como individuo, en su propio mundo,
+> sin saber que buscaban lo mismo. El lector ve las dos órbitas; ellos todavía no.
+
+## Tercera parte — La célula
+*Donde las órbitas por fin se cruzan. En el mismo lugar, delante del mismo Dios, pero todavía no juntos.*
 
 | # | Archivo | Título | Voz | Estado |
 |---|---------|--------|-----|--------|
-| 12 | `03-parte-3-todo-para-bien/12-lo-que-ahora-entendemos.md` | Lo que ahora entendemos | ambos | preguntas |
-| 13 | `03-parte-3-todo-para-bien/13-lo-que-aprendimos.md` | Lo que aprendimos (y queremos que no se olvide) | ambos | preguntas |
-| 14 | `03-parte-3-todo-para-bien/14-cartas-a-los-que-vienen.md` | Cartas a los que vienen | cada uno | preguntas |
+| 8 | `03-parte-3-la-celula/08-la-celula.md` | La célula: cómo empezó | ambos | preguntas |
+| 9 | `03-parte-3-la-celula/09-la-amistad-con-proposito.md` | La amistad con propósito | ambos | preguntas |
+| 10 | `03-parte-3-la-celula/10-el-momento-dificil.md` | El momento difícil | ambos | preguntas |
+
+## Cuarta parte — Un destino
+*Cuando se confirma. Y lo que hoy entienden que Dios estaba haciendo. Dos caminos, un destino.*
+
+| # | Archivo | Título | Voz | Estado |
+|---|---------|--------|-----|--------|
+| 11 | `04-parte-4-un-destino/11-la-confirmacion.md` | La confirmación | ambos | preguntas |
+| 12 | `04-parte-4-un-destino/12-lo-que-ahora-entendemos.md` | Lo que ahora entendemos | ambos | preguntas |
+| 13 | `04-parte-4-un-destino/13-lo-que-aprendimos.md` | Lo que aprendimos (y queremos que no se olvide) | ambos | preguntas |
+| 14 | `04-parte-4-un-destino/14-cartas-a-los-que-vienen.md` | Cartas a los que vienen | cada uno | preguntas |
 
 ## Cierre
 | # | Archivo | Título | Voz | Estado |
 |---|---------|--------|-----|--------|
-| 15 | `04-cierre/epilogo.md` | Epílogo | ambos | idea |
-| 16 | `04-cierre/agradecimientos.md` | Agradecimientos | ambos | idea |
+| 15 | `05-cierre/epilogo.md` | Epílogo | ambos | idea |
+| 16 | `05-cierre/agradecimientos.md` | Agradecimientos | ambos | idea |
 
 ## Anexos
 | Archivo | Contenido |

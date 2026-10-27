@@ -24,7 +24,7 @@ escrita para quien todavía está buscando a esa persona.
 ## Decisiones tomadas
 - Público.
 - Primera persona. Cada quien escribe su parte.
-- Nohemi lleva la Parte I; la Parte II se escribe a dos voces.
+- Cuatro partes: Ella · Él · La célula · Un destino. Las dos primeras son individuales; La célula es juntos-pero-no-juntos; Un destino es juntos.
 
 ## Pendientes
 - Subtítulo.
