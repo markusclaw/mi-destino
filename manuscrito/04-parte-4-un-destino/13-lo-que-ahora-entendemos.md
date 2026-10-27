@@ -8,7 +8,7 @@
 
 ## Preguntas guía
 
-- Tomen las luchas del capítulo 2 y 6, una por una: ¿para qué sirvió cada una?
+- Tomen las luchas del capítulo 2 y 7 (y las oraciones de los capítulos 6 y 9), una por una: ¿para qué sirvió cada una?
 - ¿Qué puertas cerradas hoy agradecen?
 - ¿Qué hubiera pasado si se hubieran conocido antes? ¿Por qué no era el tiempo?
 - ¿Cómo responden hoy a '¿Crees en el destino?' Cada uno con su propia respuesta.

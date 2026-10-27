@@ -45,23 +45,30 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .pg{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;padding:calc(var(--bar) + .5rem) var(--gutter) 5.5rem;opacity:0;visibility:hidden;transform:translateX(12px);transition:opacity .25s ease,transform .25s ease,visibility 0s .25s}
 .pg.activa{opacity:1;visibility:visible;transform:none;transition:opacity .25s ease,transform .25s ease,visibility 0s}
 .pg.atras{transform:translateX(-12px)}
-.wrap{max-width:calc(var(--measure) + 2*clamp(1.5rem,6vw,4.5rem));margin:0 auto;padding:clamp(2.5rem,6vw,4.5rem) clamp(1.5rem,6vw,4.5rem) clamp(3rem,7vw,5rem);background:var(--paper);border-radius:4px;min-height:calc(100svh - var(--bar) - 6rem)}
+.wrap{max-width:var(--measure);margin:0 auto;padding:clamp(2rem,5vw,3.5rem) 0 4rem}
 .centrada{display:block}
-.centrada .wrap{display:grid;place-items:center;text-align:center}
+.centrada .wrap{display:grid;place-items:center;align-content:center;text-align:center;min-height:calc(100svh - var(--bar) - 7rem);padding-top:0;padding-bottom:0}
 
 /* cover */
-.pg.portada{padding:0;display:grid;align-items:end;color:#fff;isolation:isolate;background:#14110e}
-.portada img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
-.portada .velo{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.1) 0%,rgba(0,0,0,.25) 45%,rgba(14,12,10,.92) 100%)}
-.portada .fondo{position:absolute;inset:0;z-index:-3;background:radial-gradient(60% 50% at 20% 30%,#4a1f29 0%,transparent 70%),radial-gradient(55% 55% at 85% 70%,#1b3f58 0%,transparent 70%),#14110e}
-.portada .in{max-width:64rem;width:100%;margin:0 auto;padding:0 var(--gutter) clamp(5rem,12vh,8rem);font-family:var(--sans)}
-.portada h1{font-family:var(--display);font-size:clamp(3.2rem,9.5vw,7.2rem);line-height:.95;letter-spacing:-.02em;font-weight:400;margin:0 0 1.2rem;max-width:12ch;text-wrap:balance;color:var(--fg)}
-.portada p{font-family:var(--serif);font-size:clamp(1.15rem,2.2vw,1.5rem);line-height:1.45;max-width:34rem;margin:0 0 2rem;color:rgba(234,226,212,.85)}
-.portada .meta{display:flex;flex-wrap:wrap;gap:1rem 1.2rem;align-items:center;font-size:.95rem;color:rgba(234,226,212,.7)}
-.portada .btn{display:inline-block;background:var(--fg);color:#14110e;font-weight:600;padding:.75rem 1.2rem;border-radius:999px;font-size:.95rem}
+.pg.portada{display:grid;place-items:center;text-align:center}
+.portada .in{max-width:42rem;padding:0 0 3rem}
+.portada .autores{font-family:var(--sans);font-size:.9rem;color:var(--fg-2);margin:0 0 1.8rem}
+.portada h1{font-family:var(--display);font-weight:400;font-size:clamp(3rem,9vw,6.2rem);line-height:1;letter-spacing:-.02em;margin:0 0 2.6rem}
+.caminos{display:block;width:min(17rem,68%);height:auto;margin:0 auto 2.8rem;overflow:visible}
+.caminos path{fill:none;stroke-width:1.4;stroke-linecap:round}
+.caminos .n{stroke:var(--nohemi)} .caminos .g{stroke:var(--greg)} .caminos .u{stroke:var(--fg-2)}
+.caminos circle{fill:var(--fg)}
+@media (prefers-reduced-motion:no-preference){
+  .caminos path{stroke-dasharray:1;stroke-dashoffset:1;animation:trazo 1.6s cubic-bezier(.4,0,.2,1) .2s forwards}
+  .caminos .u{animation-duration:.9s;animation-delay:1.7s}
+  .caminos circle{opacity:0;animation:aparece .4s ease 1.6s forwards}
+}
+@keyframes trazo{to{stroke-dashoffset:0}} @keyframes aparece{to{opacity:1}}
+.portada .meta{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;font-family:var(--sans)}
+.portada .btn{background:var(--fg);color:#14110e;font-weight:600;padding:.7rem 1.25rem;border-radius:999px;font-size:.92rem}
 .portada .btn:hover{background:#fff}
-.portada .btn.sec{background:transparent;color:var(--fg);box-shadow:inset 0 0 0 1px rgba(234,226,212,.35)}
-.portada .btn.sec:hover{background:rgba(255,255,255,.08)}
+.portada .btn.sec{background:transparent;color:var(--fg-2);box-shadow:inset 0 0 0 1px rgba(234,226,212,.2)}
+.portada .btn.sec:hover{color:var(--fg);box-shadow:inset 0 0 0 1px rgba(234,226,212,.4)}
 
 /* epigraph / parts / end */
 .epi blockquote{font-family:var(--display);font-style:italic;font-weight:400;margin:0 auto .9rem;max-width:30rem;font-size:clamp(1.7rem,3.6vw,2.4rem);line-height:1.3}
@@ -83,24 +90,21 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .fin .pie{margin-top:3rem;font-family:var(--sans);font-size:.8rem;color:var(--fg-3)}
 
 /* index */
-.sec h2{font-family:var(--display);font-size:clamp(2rem,3.6vw,2.6rem);font-weight:400;margin:0 0 .5rem}
-.sec .lead{color:var(--fg-2);margin:0 0 2rem;font-size:1.05rem}
-.toc .parte{font-family:var(--sans);display:flex;align-items:baseline;gap:.8rem;margin:2.2rem 0 .3rem;padding-bottom:.6rem;border-bottom:1px solid var(--fg-2)}
-.toc .parte b{font-weight:600;font-size:1.05rem}
-.toc .parte span{color:var(--fg-2);font-size:.9rem}
+.sec h2{font-family:var(--display);font-size:clamp(2rem,3.6vw,2.6rem);font-weight:400;margin:0 0 .3rem}
+.sec .lead{font-family:var(--sans);color:var(--fg-3);margin:0 0 1.4rem;font-size:.85rem;display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
+.toc .parte{display:flex;align-items:baseline;gap:.7rem;margin:1.7rem 0 .25rem}
+.toc .parte b{font-family:var(--display);font-weight:400;font-size:1.4rem}
+.toc .parte span{font-family:var(--sans);color:var(--fg-3);font-size:.78rem}
 .toc ol{list-style:none;margin:0;padding:0}
-.toc li{border-bottom:1px solid var(--line)}
-.toc li button{display:grid;grid-template-columns:2rem 1fr auto;align-items:center;gap:1rem;padding:.85rem 0;width:100%;text-align:left}
-.toc li button:hover .t{text-decoration:underline;text-underline-offset:.22em;text-decoration-thickness:1px}
-.toc li.actual .t{color:var(--nohemi)}
-.toc .n{font-family:var(--sans);color:var(--fg-3);font-size:.9rem;font-variant-numeric:tabular-nums}
-.toc .t{font-family:var(--sans);font-weight:500;font-size:1.02rem;letter-spacing:-.01em}
-.toc .t small{display:block;font-family:var(--serif);font-weight:400;color:var(--fg-2);font-size:.95rem;margin-top:.15rem}
-.toc .r{font-family:var(--sans);font-size:.8rem;color:var(--fg-3);display:flex;align-items:center;gap:.6rem;white-space:nowrap}
-.voces{display:inline-flex;gap:4px}
-.voces i{width:.5rem;height:.5rem;border-radius:50%;display:block}
+.toc > ol:first-child{margin-top:.4rem}
+.toc li button{display:grid;grid-template-columns:1.8rem 1fr auto;align-items:baseline;gap:.6rem;padding:.36rem 0;width:100%;text-align:left;font-family:var(--sans);color:var(--fg-2)}
+.toc li button:hover,.toc li.actual button{color:var(--fg)}
+.toc .n{color:var(--fg-3);font-size:.8rem;font-variant-numeric:tabular-nums}
+.toc .t{font-size:1rem;letter-spacing:-.005em}
+.toc .r{display:flex;align-items:center;gap:.55rem;font-size:.72rem;color:var(--fg-3);white-space:nowrap}
+.voces{display:inline-flex;gap:4px;align-self:center}
+.voces i{width:.45rem;height:.45rem;border-radius:50%;display:block}
 .vn{background:var(--nohemi)} .vg{background:var(--greg)}
-@media (max-width:520px){ .toc li button{grid-template-columns:1.6rem 1fr auto} .toc .r .e{display:none} }
 
 /* chapters */
 .cap .k{font-family:var(--display);font-style:italic;font-size:1.05rem;color:var(--fg-3);margin:0 0 .4rem}
@@ -110,7 +114,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .autor .av{width:1.6rem;height:1.6rem;border-radius:50%;display:grid;place-items:center;color:#14110e;font-weight:600;font-size:.7rem}
 .autor .av.n{background:var(--nohemi)} .autor .av.g{background:var(--greg)}
 .autor .dos{display:flex}
-.autor .dos .av + .av{margin-left:-.45rem;box-shadow:0 0 0 2px var(--paper)}
+.autor .dos .av + .av{margin-left:-.45rem;box-shadow:0 0 0 2px var(--bg)}
 .cap p{margin:0 0 1.35em;text-wrap:pretty}
 .cap p + p:not(.habla):not(.vacio):not(.pregunta){text-indent:1.4em;margin-top:-.7em}
 .habla + p,.pregunta + p,.vacio + p,.cuaderno + p,.cap h3 + p{text-indent:0!important;margin-top:0!important}
@@ -191,18 +195,21 @@ mark.revisar{background:rgba(224,113,126,.25);color:inherit;font-family:var(--sa
 <div class="telon" id="telon"></div>
 
 <main class="libro" id="libro">
-<section class="pg portada" data-id="portada" data-titulo="Portada" data-grupo="" data-foto="1">
-  <div class="fondo" aria-hidden="true"></div><img src="materiales/fotos/portada.jpg" alt="" onerror="this.remove()"><div class="velo" aria-hidden="true"></div>
-  <div class="in"><h1>Dos caminos, un destino</h1><p>La historia de Nohemi y Greg: de dónde venía cada uno, cómo se cruzaron, y lo que hoy entienden que Dios estaba haciendo todo ese tiempo.</p>
-  <div class="meta"><button class="btn" type="button" data-ir="prologo">Empezar a leer</button><button class="btn sec" type="button" id="continuar" hidden></button><span>Escrito por Nohemi y Greg</span><span>Borrador privado</span></div></div>
+<section class="pg portada" data-id="portada" data-titulo="Portada" data-grupo="">
+  <div class="in">
+    <p class="autores">Nohemi y Greg</p>
+    <h1>Dos caminos,<br>un destino</h1>
+    <svg class="caminos" viewBox="0 0 240 80" aria-hidden="true"><path class="n" pathLength="1" d="M2 10 C 70 10, 100 40, 150 40"/><path class="g" pathLength="1" d="M2 70 C 70 70, 100 40, 150 40"/><path class="u" pathLength="1" d="M150 40 L 238 40"/><circle cx="150" cy="40" r="2.6"/></svg>
+    <div class="meta"><button class="btn" type="button" data-ir="prologo">Empezar a leer</button><button class="btn sec" type="button" id="continuar" hidden></button></div>
+  </div>
 </section>
 
 <section class="pg centrada epi" data-id="epigrafe" data-titulo="Epígrafe" data-grupo=""><div class="wrap"><blockquote>Sabemos que a los que aman a Dios, todas las cosas les ayudan a bien.</blockquote><cite>Romanos 8:28</cite></div></section>
 
 <section class="pg sec toc" data-id="indice" data-titulo="Índice" data-grupo=""><div class="wrap">
-  <h2>Índice</h2><p class="lead">Cuatro partes: ella, él, la célula, un destino. Los puntos de color dicen quién habla. Pasa las páginas con las flechas o elige un capítulo.</p><div id="toc-lista"></div></div></section>
+  <h2>Índice</h2><p class="lead">Quién habla:<span class="voces"><i class="vn"></i></span>Nohemi<span class="voces"><i class="vg"></i></span>Greg</p><div id="toc-lista"></div></div></section>
 
-<article class="pg cap" data-id="prologo" data-titulo="Por qué contamos esto" data-grupo="" data-voz="ng" data-estado="Borrador"><div class="wrap">
+<article class="pg cap" data-id="prologo" data-titulo="Prólogo" data-grupo="" data-voz="ng" data-estado="Borrador"><div class="wrap">
   <p class="k">Prólogo</p><h2>Por qué contamos esto</h2><div class="autor"><span class="dos"><span class="av n">N</span><span class="av g">G</span></span>Nohemi y Greg</div>
   <p class="habla" style="--v:var(--nohemi)">Nohemi</p>
 <p class="pregunta">¿Crees en el destino? ¿Alguna vez has pensado si Dios tiene a la persona correcta en tu vida?</p>
@@ -213,7 +220,7 @@ mark.revisar{background:rgba(224,113,126,.25);color:inherit;font-family:var(--sa
 </div></article>
 
 <section class="pg centrada parte-abre" data-id="parte1" data-titulo="Primera parte" data-sub="Ella" data-grupo="">
-  <div class="wrap"><p class="k">Primera parte</p><h2>Ella</h2><p>El mundo de Nohemi antes de Greg. Sus raíces, sus luchas, su encuentro con Dios, su espera.</p><div class="caps"><button type="button" data-ir="cap1">1. De dónde vengo</button><button type="button" data-ir="cap2">2. Las luchas</button><button type="button" data-ir="cap3">3. El encuentro con Dios</button><button type="button" data-ir="cap4">4. El desierto (la espera)</button></div></div>
+  <div class="wrap"><p class="k">Primera parte</p><h2>Ella</h2><p>El mundo de Nohemi antes de Greg: sus raíces, sus luchas, su encuentro con Dios, su espera. Y una oración por un esposo que todavía no conocía.</p><div class="caps"><button type="button" data-ir="cap1">1. De dónde vengo</button><button type="button" data-ir="cap2">2. Las luchas</button><button type="button" data-ir="cap3">3. El encuentro con Dios</button><button type="button" data-ir="cap4">4. El desierto (la espera)</button><button type="button" data-ir="cap5">5. Orando por él</button></div></div>
 </section>
 
 <article class="pg cap" data-id="cap1" data-titulo="De dónde vengo" data-grupo="Primera parte" data-voz="n" data-estado="En escritura" data-num="1"><div class="wrap">
@@ -236,22 +243,27 @@ mark.revisar{background:rgba(224,113,126,.25);color:inherit;font-family:var(--sa
   <p class="vacio">Este capítulo todavía se está escribiendo.<small>La etapa entre conocer a Dios y conocer a Greg: la soledad, la espera, las oraciones que parecían no tener respuesta, lo que Dios formó en ti mientras no pasaba nada.</small></p>
 </div></article>
 
+<article class="pg cap" data-id="cap5" data-titulo="Orando por él" data-grupo="Primera parte" data-voz="n" data-estado="En escritura" data-num="5"><div class="wrap">
+  <p class="k">Capítulo 5</p><h2>Orando por él</h2><div class="autor"><span class="av n">N</span>Nohemi</div>
+  <p class="vacio">Este capítulo todavía se está escribiendo. Antes de conocer a Greg, Nohemi también oraba por su esposo.</p>
+</div></article>
+
 <section class="pg centrada parte-abre" data-id="parte2" data-titulo="Segunda parte" data-sub="Él" data-grupo="">
-  <div class="wrap"><p class="k">Segunda parte</p><h2>Él</h2><p>El mundo de Greg antes de Nohemi. Buscando lo mismo, en otro lugar, a veces a unos metros.</p><div class="caps"><button type="button" data-ir="cap5">5. Mi camino</button><button type="button" data-ir="cap6">6. Lo que tuve que soltar</button><button type="button" data-ir="cap7">7. Orando por alguien que no conocía</button></div></div>
+  <div class="wrap"><p class="k">Segunda parte</p><h2>Él</h2><p>El mundo de Greg antes de Nohemi. Buscando lo mismo, en otro lugar, a veces a unos metros. Y una oración por una esposa que todavía no conocía.</p><div class="caps"><button type="button" data-ir="cap6">6. Mi camino</button><button type="button" data-ir="cap7">7. Lo que tuve que soltar</button><button type="button" data-ir="cap8">8. Orando por ella</button></div></div>
 </section>
 
-<article class="pg cap" data-id="cap5" data-titulo="Mi camino" data-grupo="Segunda parte" data-voz="g" data-estado="En escritura" data-num="5"><div class="wrap">
-  <p class="k">Capítulo 5</p><h2>Mi camino</h2><div class="autor"><span class="av g">G</span>Greg</div>
+<article class="pg cap" data-id="cap6" data-titulo="Mi camino" data-grupo="Segunda parte" data-voz="g" data-estado="En escritura" data-num="6"><div class="wrap">
+  <p class="k">Capítulo 6</p><h2>Mi camino</h2><div class="autor"><span class="av g">G</span>Greg</div>
   <p class="vacio">Este capítulo todavía se está escribiendo.<small>Tu historia hasta antes de la célula: de dónde vienes, tu fe, tu trabajo, lo que te movía.</small></p>
 </div></article>
 
-<article class="pg cap" data-id="cap6" data-titulo="Lo que tuve que soltar" data-grupo="Segunda parte" data-voz="g" data-estado="En escritura" data-num="6"><div class="wrap">
-  <p class="k">Capítulo 6</p><h2>Lo que tuve que soltar</h2><div class="autor"><span class="av g">G</span>Greg</div>
+<article class="pg cap" data-id="cap7" data-titulo="Lo que tuve que soltar" data-grupo="Segunda parte" data-voz="g" data-estado="En escritura" data-num="7"><div class="wrap">
+  <p class="k">Capítulo 7</p><h2>Lo que tuve que soltar</h2><div class="autor"><span class="av g">G</span>Greg</div>
   <p class="vacio">Este capítulo todavía se está escribiendo.<small>Lo que tuvo que terminar, romperse o cerrarse para que pudieras llegar limpio a esta historia.</small></p>
 </div></article>
 
-<article class="pg cap" data-id="cap7" data-titulo="Orando por alguien que no conocía" data-grupo="Segunda parte" data-voz="g" data-estado="Borrador" data-num="7"><div class="wrap">
-  <p class="k">Capítulo 7</p><h2>Orando por alguien que no conocía</h2><div class="autor"><span class="av g">G</span>Greg</div>
+<article class="pg cap" data-id="cap8" data-titulo="Orando por ella" data-grupo="Segunda parte" data-voz="g" data-estado="Borrador" data-num="8"><div class="wrap">
+  <p class="k">Capítulo 8</p><h2>Orando por ella</h2><div class="autor"><span class="av g">G</span>Greg</div>
   <p class="vacio">Este capítulo todavía se está escribiendo. Entre 2016 y 2018, Greg escribió oraciones por una esposa que no conocía. Diez años después, Nohemi preguntaría: «¿en dónde ha estado Greg todo este tiempo?». Este capítulo es la respuesta.</p>
 <aside class="cuaderno" style="--v:var(--greg)"><p class="de"><b>Del cuaderno de Greg</b><span>25 de diciembre de 2016, 7:45 PM</span><span>Escrito en inglés; traducción de trabajo</span></p><p>Señor, estoy tan entusiasmado por conocer a mi esposa. Sé que está en tus manos y sé que no he sido el mejor administrador. Sé que he fallado a tu tiempo y no he sido obediente, pero estoy cansado de quedarme atrás y de quedarme corto. Señor, estoy listo para poner todo en tus manos y obedecer tus mandatos, para que puedas mostrarme verdad y gracia. No puedo esperar a conocerla, Señor, y no puedo esperar a enamorarme de la persona que me has dado.</p></aside>
 <p>Te entrego mi corazón para que tú se lo des a ella. Y soy tuyo, Señor. Gracias, Señor, en el nombre de Jesús. Amén. :::</p>
@@ -260,51 +272,51 @@ mark.revisar{background:rgba(224,113,126,.25);color:inherit;font-family:var(--sa
 </div></article>
 
 <section class="pg centrada parte-abre" data-id="parte3" data-titulo="Tercera parte" data-sub="La célula" data-grupo="">
-  <div class="wrap"><p class="k">Tercera parte</p><h2>La célula</h2><p>Donde las órbitas por fin se cruzan. En el mismo lugar, delante del mismo Dios, pero todavía no juntos.</p><div class="caps"><button type="button" data-ir="cap8">8. La célula: cómo empezó</button><button type="button" data-ir="cap9">9. La amistad con propósito</button><button type="button" data-ir="cap10">10. El momento difícil</button></div></div>
+  <div class="wrap"><p class="k">Tercera parte</p><h2>La célula</h2><p>Donde las órbitas por fin se cruzan. En el mismo lugar, delante del mismo Dios, pero todavía no juntos.</p><div class="caps"><button type="button" data-ir="cap9">9. La célula: cómo empezó</button><button type="button" data-ir="cap10">10. La amistad con propósito</button><button type="button" data-ir="cap11">11. El momento difícil</button></div></div>
 </section>
 
-<article class="pg cap" data-id="cap8" data-titulo="La célula: cómo empezó" data-grupo="Tercera parte" data-voz="ng" data-estado="En escritura" data-num="8"><div class="wrap">
-  <p class="k">Capítulo 8</p><h2>La célula: cómo empezó</h2><div class="autor"><span class="dos"><span class="av n">N</span><span class="av g">G</span></span>ambos (primero Nohemi, luego Greg)</div>
+<article class="pg cap" data-id="cap9" data-titulo="La célula: cómo empezó" data-grupo="Tercera parte" data-voz="ng" data-estado="En escritura" data-num="9"><div class="wrap">
+  <p class="k">Capítulo 9</p><h2>La célula: cómo empezó</h2><div class="autor"><span class="dos"><span class="av n">N</span><span class="av g">G</span></span>ambos (primero Nohemi, luego Greg)</div>
   <p class="vacio">Este capítulo todavía se está escribiendo.<small>El primer encuentro, contado dos veces: lo que vio ella y lo que vio él. El contraste es parte de la gracia de este capítulo.</small></p>
 </div></article>
 
-<article class="pg cap" data-id="cap9" data-titulo="La amistad con propósito" data-grupo="Tercera parte" data-voz="ng" data-estado="En escritura" data-num="9"><div class="wrap">
-  <p class="k">Capítulo 9</p><h2>La amistad con propósito</h2><div class="autor"><span class="dos"><span class="av n">N</span><span class="av g">G</span></span>ambos</div>
+<article class="pg cap" data-id="cap10" data-titulo="La amistad con propósito" data-grupo="Tercera parte" data-voz="ng" data-estado="En escritura" data-num="10"><div class="wrap">
+  <p class="k">Capítulo 10</p><h2>La amistad con propósito</h2><div class="autor"><span class="dos"><span class="av n">N</span><span class="av g">G</span></span>ambos</div>
   <p class="vacio">Este capítulo todavía se está escribiendo. Cómo pasaron de conocidos a amigos, y por qué esa amistad fue distinta.</p>
 <aside class="cuaderno" style="--v:var(--nohemi)"><p class="de"><b>Del cuaderno de Nohemi</b><span>8 de octubre de 2026</span></p><p>Mi pregunta es: ¿en dónde ha estado Greg todo este tiempo?</p></aside>
 <p>Sabe, siempre le digo a mis nuevas amistades: nada existe por casualidad. Y si llegaste a mi vida es con un propósito. Tal vez aún no descubrimos el porqué y para qué, pero es por X razón. Tal vez llegaste para enseñarme algo que necesito aprender. Tal vez nuestra amistad solo dure poco tiempo. Tal vez <span class="tachado">así como llegaste, así te vas</span>. :::</p>
 </div></article>
 
-<article class="pg cap" data-id="cap10" data-titulo="El momento difícil" data-grupo="Tercera parte" data-voz="ng" data-estado="En escritura" data-num="10"><div class="wrap">
-  <p class="k">Capítulo 10</p><h2>El momento difícil</h2><div class="autor"><span class="dos"><span class="av n">N</span><span class="av g">G</span></span>ambos</div>
+<article class="pg cap" data-id="cap11" data-titulo="El momento difícil" data-grupo="Tercera parte" data-voz="ng" data-estado="En escritura" data-num="11"><div class="wrap">
+  <p class="k">Capítulo 11</p><h2>El momento difícil</h2><div class="autor"><span class="dos"><span class="av n">N</span><span class="av g">G</span></span>ambos</div>
   <p class="vacio">Este capítulo todavía se está escribiendo.<small>Cuando todo se salió de control: la familia, las indirectas, los malos entendidos, el 'reporte de noticias'. La confrontación y lo que vino después. Material base: la carta del 8 de octubre.</small></p>
 </div></article>
 
 <section class="pg centrada parte-abre" data-id="parte4" data-titulo="Cuarta parte" data-sub="Un destino" data-grupo="">
-  <div class="wrap"><p class="k">Cuarta parte</p><h2>Un destino</h2><p>Cuando se confirma. Y lo que hoy entendemos que Dios estaba haciendo todo ese tiempo.</p><div class="caps"><button type="button" data-ir="cap11">11. La confirmación</button><button type="button" data-ir="cap12">12. Lo que ahora entendemos</button><button type="button" data-ir="cap13">13. Lo que aprendimos (y queremos que no se olvide)</button><button type="button" data-ir="cap14">14. Cartas a los que vienen</button></div></div>
+  <div class="wrap"><p class="k">Cuarta parte</p><h2>Un destino</h2><p>Cuando se confirma. Y lo que hoy entendemos que Dios estaba haciendo todo ese tiempo.</p><div class="caps"><button type="button" data-ir="cap12">12. La confirmación</button><button type="button" data-ir="cap13">13. Lo que ahora entendemos</button><button type="button" data-ir="cap14">14. Lo que aprendimos (y queremos que no se olvide)</button><button type="button" data-ir="cap15">15. Cartas a los que vienen</button></div></div>
 </section>
 
-<article class="pg cap" data-id="cap11" data-titulo="La confirmación" data-grupo="Cuarta parte" data-voz="ng" data-estado="En escritura" data-num="11"><div class="wrap">
-  <p class="k">Capítulo 11</p><h2>La confirmación</h2><div class="autor"><span class="dos"><span class="av n">N</span><span class="av g">G</span></span>ambos</div>
+<article class="pg cap" data-id="cap12" data-titulo="La confirmación" data-grupo="Cuarta parte" data-voz="ng" data-estado="En escritura" data-num="12"><div class="wrap">
+  <p class="k">Capítulo 12</p><h2>La confirmación</h2><div class="autor"><span class="dos"><span class="av n">N</span><span class="av g">G</span></span>ambos</div>
   <p class="vacio">Este capítulo todavía se está escribiendo.<small>Cómo supieron. No el momento romántico de película, sino la paz, las señales, las confirmaciones concretas de que esto venía de Dios.</small></p>
 </div></article>
 
-<article class="pg cap" data-id="cap12" data-titulo="Lo que ahora entendemos" data-grupo="Cuarta parte" data-voz="ng" data-estado="En escritura" data-num="12"><div class="wrap">
-  <p class="k">Capítulo 12</p><h2>Lo que ahora entendemos</h2><div class="autor"><span class="dos"><span class="av n">N</span><span class="av g">G</span></span>ambos</div>
+<article class="pg cap" data-id="cap13" data-titulo="Lo que ahora entendemos" data-grupo="Cuarta parte" data-voz="ng" data-estado="En escritura" data-num="13"><div class="wrap">
+  <p class="k">Capítulo 13</p><h2>Lo que ahora entendemos</h2><div class="autor"><span class="dos"><span class="av n">N</span><span class="av g">G</span></span>ambos</div>
   <p class="vacio">Este capítulo todavía se está escribiendo.<small>Mirando atrás con los ojos de hoy: cómo las luchas de la Parte I preparaban el encuentro de la Parte II.</small></p>
 </div></article>
 
-<article class="pg cap" data-id="cap13" data-titulo="Lo que aprendimos (y queremos que no se olvide)" data-grupo="Cuarta parte" data-voz="ng" data-estado="En escritura" data-num="13"><div class="wrap">
-  <p class="k">Capítulo 13</p><h2>Lo que aprendimos (y queremos que no se olvide)</h2><div class="autor"><span class="dos"><span class="av n">N</span><span class="av g">G</span></span>ambos</div>
+<article class="pg cap" data-id="cap14" data-titulo="Lo que aprendimos (y queremos que no se olvide)" data-grupo="Cuarta parte" data-voz="ng" data-estado="En escritura" data-num="14"><div class="wrap">
+  <p class="k">Capítulo 14</p><h2>Lo que aprendimos (y queremos que no se olvide)</h2><div class="autor"><span class="dos"><span class="av n">N</span><span class="av g">G</span></span>ambos</div>
   <p class="vacio">Este capítulo todavía se está escribiendo.<small>Las lecciones, dichas sin sermonear. Lo que quisieran que sus hijos sepan de memoria.</small></p>
 </div></article>
 
-<article class="pg cap" data-id="cap14" data-titulo="Cartas a los que vienen" data-grupo="Cuarta parte" data-voz="ng" data-estado="En escritura" data-num="14"><div class="wrap">
-  <p class="k">Capítulo 14</p><h2>Cartas a los que vienen</h2><div class="autor"><span class="dos"><span class="av n">N</span><span class="av g">G</span></span>cada uno escribe la suya</div>
+<article class="pg cap" data-id="cap15" data-titulo="Cartas a los que vienen" data-grupo="Cuarta parte" data-voz="ng" data-estado="En escritura" data-num="15"><div class="wrap">
+  <p class="k">Capítulo 15</p><h2>Cartas a los que vienen</h2><div class="autor"><span class="dos"><span class="av n">N</span><span class="av g">G</span></span>cada uno escribe la suya</div>
   <p class="vacio">Este capítulo todavía se está escribiendo.<small>Cartas directas: a los hijos que aún no nacen, a los sobrinos, a la familia, a quien lea esto en 30 años. Esta es la parte más 'legado' del libro.</small></p>
 </div></article>
 
-<article class="pg cap" data-id="epilogo" data-titulo="Donde estamos hoy" data-grupo="" data-voz="ng" data-estado="Por escribir"><div class="wrap">
+<article class="pg cap" data-id="epilogo" data-titulo="Epílogo" data-grupo="" data-voz="ng" data-estado="Por escribir"><div class="wrap">
   <p class="k">Epílogo</p><h2>Donde estamos hoy</h2><div class="autor"><span class="dos"><span class="av n">N</span><span class="av g">G</span></span>ambos</div>
   <p class="vacio">Este capítulo todavía se está escribiendo.<small>Dónde están hoy. Se escribe al final, cuando todo lo demás esté listo.</small></p>
 </div></article>
@@ -328,15 +340,16 @@ mark.revisar{background:rgba(224,113,126,.25);color:inherit;font-family:var(--sa
   var pgs=[].slice.call(document.querySelectorAll('.pg')), ids=pgs.map(function(p){return p.dataset.id;}), idx=-1, KEY='destino-ultima';
   function voces(v){if(!v)return '';return '<span class="voces">'+(v.indexOf('n')>-1?'<i class="vn"></i>':'')+(v.indexOf('g')>-1?'<i class="vg"></i>':'')+'</span>';}
   function item(p,drawer){
-    var d=p.dataset, t=d.titulo+(d.sub&&!drawer?'<small>'+d.sub+'</small>':''), n=d.num||'';
-    var r=drawer?voces(d.voz):'<span class="r">'+voces(d.voz)+(d.estado?'<span class="e">'+d.estado+'</span>':'')+'</span>';
+    var d=p.dataset, t=d.titulo, n=d.num||'';
+    var est=(d.estado&&['En escritura','Por escribir'].indexOf(d.estado)<0)?'<span class="e">'+d.estado+'</span>':'';
+    var r=drawer?voces(d.voz):'<span class="r">'+est+voces(d.voz)+'</span>';
     return '<li data-id="'+d.id+'"><button type="button" data-ir="'+d.id+'"><span class="n">'+n+'</span><span class="t">'+t+'</span>'+r+'</button></li>';
   }
   function grupos(drawer){
     var html='', abierto=false;
     pgs.forEach(function(p){var d=p.dataset; if(['portada','epigrafe','indice','fin','dedicatoria'].indexOf(d.id)>-1)return;
       if(p.classList.contains('parte-abre')){ if(abierto)html+='</ol>';
-        html+= drawer?'<div class="grupo">'+d.titulo+' · '+d.sub+'</div><ol>':'<div class="parte"><b>'+d.titulo+'</b><span>'+d.sub+'</span></div><ol>'; abierto=true; return;}
+        html+= drawer?'<div class="grupo">'+d.titulo+' · '+d.sub+'</div><ol>':'<div class="parte"><b>'+d.sub+'</b><span>'+d.titulo+'</span></div><ol>'; abierto=true; return;}
       if(!d.grupo){ if(abierto){html+='</ol>';abierto=false;} html+='<ol>'+item(p,drawer)+'</ol>'; return;}
       html+=item(p,drawer);
     });

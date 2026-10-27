@@ -1,10 +1,10 @@
-# Orando por alguien que no conocía
+# Orando por ella
 
 - **Voz:** Greg
 - **Estado:** borrador (hay material: tres notas de 2016 y 2018 en `materiales/cuaderno/`)
 - **Dónde va:** ver `LIBRO.md`
 
-> El capítulo bisagra del libro. Entre 2016 y 2018, Greg escribió oraciones por una esposa que no conocía:
+> Cierra la segunda parte y es espejo del capítulo 5, donde Nohemi ora por él. Entre 2016 y 2018, Greg escribió oraciones por una esposa que no conocía:
 > por ella, por su vientre, por sus hijos. Nohemi aparece diez años después preguntando "¿en dónde ha estado Greg todo este tiempo?".
 > Este capítulo es la respuesta.
 

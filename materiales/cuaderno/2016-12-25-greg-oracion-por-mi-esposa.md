@@ -3,8 +3,8 @@ fecha: 2016-12-25
 autor: Greg
 tipo: oración (nota del teléfono, escrita en mayúsculas)
 idioma: inglés (original) + español (traducción de trabajo)
-capitulos: [7, 11, 12]
-uso: recuadro (cap 7), cita (cap 11: "¿dónde ha estado Greg?" → aquí)
+capitulos: [8, 12, 13]
+uso: recuadro (cap 8), cita (cap 11: "¿dónde ha estado Greg?" → aquí)
 estado: transcrita
 ---
 
@@ -24,5 +24,5 @@ Señor, estoy tan entusiasmado por conocer a mi esposa. Sé que está en tus man
 ## Qué hay aquí para el libro
 
 - Es la respuesta literal a la pregunta de Nohemi del 8 de octubre de 2026: "¿en dónde ha estado Greg todo este tiempo?" → orando por ella, sin conocerla, desde 2016.
-- "Te entrego mi corazón para que tú se lo des a ella": frase para cerrar el capítulo 7 o abrir el 11.
-- Confesión honesta ("no he sido el mejor administrador") conecta con el cap. 6, *Lo que tuve que soltar*.
+- "Te entrego mi corazón para que tú se lo des a ella": frase para cerrar el capítulo 8 o abrir el 12.
+- Confesión honesta ("no he sido el mejor administrador") conecta con el cap. 7, *Lo que tuve que soltar*.

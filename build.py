@@ -105,7 +105,8 @@ def pagina_cap(cap, pid, kicker, num, grupo):
     cuerpo = render_cuerpo(cap["cuerpo"]) if cap["cuerpo"] else ""
     if not cuerpo:
         cuerpo = f'<p class="vacio">Este capítulo todavía se está escribiendo.' + (f'<small>{esc(cap["intro"])}</small>' if cap["intro"] else "") + "</p>"
-    attrs = f'data-id="{pid}" data-titulo="{esc(cap["titulo"])}" data-grupo="{esc(grupo)}" data-voz="{voz_codigo(cap["voz"])}" data-estado="{esc(estado)}"'
+    titulo_toc = cap["titulo"] if num else kicker
+    attrs = f'data-id="{pid}" data-titulo="{esc(titulo_toc)}" data-grupo="{esc(grupo)}" data-voz="{voz_codigo(cap["voz"])}" data-estado="{esc(estado)}"'
     if num: attrs += f' data-num="{num}"'
     return f'''<article class="pg cap" {attrs}><div class="wrap">
   <p class="k">{esc(kicker)}</p><h2>{esc(cap["titulo"])}</h2>{autor_html(cap["voz"])}
@@ -121,10 +122,14 @@ def pagina_parte(i, parte, caps):
 def main():
     paginas = []
     # portada
-    paginas.append(f'''<section class="pg portada" data-id="portada" data-titulo="Portada" data-grupo="" data-foto="1">
-  <div class="fondo" aria-hidden="true"></div><img src="{esc(cfg["portada_foto"])}" alt="" onerror="this.remove()"><div class="velo" aria-hidden="true"></div>
-  <div class="in"><h1>{esc(cfg["titulo"])}</h1><p>{esc(cfg["lead"])}</p>
-  <div class="meta"><button class="btn" type="button" data-ir="prologo">Empezar a leer</button><button class="btn sec" type="button" id="continuar" hidden></button><span>Escrito por {esc(cfg["autores"])}</span><span>{esc(cfg["estado_libro"])}</span></div></div>
+    titulo_h1 = esc(cfg["titulo"]).replace(", ", ",<br>", 1)
+    paginas.append(f'''<section class="pg portada" data-id="portada" data-titulo="Portada" data-grupo="">
+  <div class="in">
+    <p class="autores">{esc(cfg["autores"])}</p>
+    <h1>{titulo_h1}</h1>
+    <svg class="caminos" viewBox="0 0 240 80" aria-hidden="true"><path class="n" pathLength="1" d="M2 10 C 70 10, 100 40, 150 40"/><path class="g" pathLength="1" d="M2 70 C 70 70, 100 40, 150 40"/><path class="u" pathLength="1" d="M150 40 L 238 40"/><circle cx="150" cy="40" r="2.6"/></svg>
+    <div class="meta"><button class="btn" type="button" data-ir="prologo">Empezar a leer</button><button class="btn sec" type="button" id="continuar" hidden></button></div>
+  </div>
 </section>''')
     # dedicatoria (si tiene texto)
     ded = leer_capitulo(MAN / "00-apertura/dedicatoria.md")
@@ -133,7 +138,7 @@ def main():
     e = cfg["epigrafe"]
     paginas.append(f'<section class="pg centrada epi" data-id="epigrafe" data-titulo="Epígrafe" data-grupo=""><div class="wrap"><blockquote>{esc(e["texto"])}</blockquote><cite>{esc(e["cita"])}</cite></div></section>')
     paginas.append('''<section class="pg sec toc" data-id="indice" data-titulo="Índice" data-grupo=""><div class="wrap">
-  <h2>Índice</h2><p class="lead">Cuatro partes: ella, él, la célula, un destino. Los puntos de color dicen quién habla. Pasa las páginas con las flechas o elige un capítulo.</p><div id="toc-lista"></div></div></section>''')
+  <h2>Índice</h2><p class="lead">Quién habla:<span class="voces"><i class="vn"></i></span>Nohemi<span class="voces"><i class="vg"></i></span>Greg</p><div id="toc-lista"></div></div></section>''')
     nota = leer_capitulo(MAN / "00-apertura/nota-al-lector.md")
     if nota["cuerpo"]:
         paginas.append(pagina_cap(nota, "nota", "Nota a quien lea esto", None, ""))

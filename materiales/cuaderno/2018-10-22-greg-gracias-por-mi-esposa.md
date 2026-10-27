@@ -3,7 +3,7 @@ fecha: 2018-10-22
 autor: Greg
 tipo: nota del teléfono
 idioma: inglés (original) + español
-capitulos: [7]
+capitulos: [8]
 uso: cita
 estado: transcrita; contexto pendiente (Greg: ¿qué pasaba ese día? "deep sorrow")
 ---
@@ -20,4 +20,4 @@ Gracias por mi esposa. Es perfecta. No hay palabras para describirla, solo: divi
 
 ## Para Greg
 
-- "Dolor profundo" en medio de una acción de gracias: ¿qué estaba pasando en octubre de 2018? Eso es escena para el cap. 6 o 7.
+- "Dolor profundo" en medio de una acción de gracias: ¿qué estaba pasando en octubre de 2018? Eso es escena para el cap. 7 o 8.

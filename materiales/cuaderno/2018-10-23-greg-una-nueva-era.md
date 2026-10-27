@@ -3,8 +3,8 @@ fecha: 2018-10-23
 autor: Greg
 tipo: declaración / oración (nota del teléfono)
 idioma: inglés (original) + español
-capitulos: [7, 14]
-uso: recuadro (cap 7), cita (cap 14 Cartas a los que vienen: "empiezo a ver a mis descendientes")
+capitulos: [8, 15]
+uso: recuadro (cap 8), cita (cap 15 Cartas a los que vienen: "empiezo a ver a mis descendientes")
 estado: transcrita
 ---
 
@@ -20,5 +20,5 @@ Declaro esto como una nueva era, en la que empiezo a ver a mis descendientes en 
 
 ## Qué hay aquí para el libro
 
-- Este libro se escribe "como legado para nuestros futuros hijos". Greg ya estaba orando por esos hijos en 2018. Eso cierra el círculo: la Parte III (Cartas a los que vienen) empieza aquí.
+- Este libro se escribe "como legado para nuestros futuros hijos". Greg ya estaba orando por esos hijos en 2018. Eso cierra el círculo: la cuarta parte (Cartas a los que vienen) empieza aquí.
 - "Madre de sabiduría y maestra de fe": epígrafe posible para la Parte I de Nohemi.

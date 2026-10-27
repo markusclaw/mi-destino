@@ -2,15 +2,15 @@
 fecha: 2026-10-08
 autor: Nohemi
 tipo: carta
-capitulos: [9, 10, 11]
-uso: recuadro (cap 9), cita (cap 10: "NO ME GUSTA" y la lista), cita (cap 11: el tachón)
+capitulos: [10, 11, 12]
+uso: recuadro (cap 10), cita (cap 10: "NO ME GUSTA" y la lista), cita (cap 11: el tachón)
 estado: transcrita, posiblemente incompleta
 ---
 
 # Carta de Nohemi a Greg — 8 de octubre de 2026
 
 Transcripción de las notas del teléfono de Nohemi (captura del jueves 8 oct 2026, 9:54 PM).
-Texto original, sin corregir. Es material para los capítulos 9 (La amistad con propósito) y 10 (El momento difícil).
+Texto original, sin corregir. Es material para los capítulos 10 (La amistad con propósito) y 11 (El momento difícil).
 La carta parece estar incompleta: termina en una lista. Falta el resto, si existe.
 
 ---
@@ -53,7 +53,7 @@ Todo se salió de control. Mi familia te apoya, está de acuerdo, las indirectas
 
 ## Qué hay aquí para el libro
 
-- **Frase para abrir el cap. 8 o 9:** "¿En dónde ha estado Greg todo este tiempo?"
+- **Frase para abrir el cap. 9 o 9:** "¿En dónde ha estado Greg todo este tiempo?"
 - **Tesis de Nohemi:** "Nada existe por casualidad." Es el mismo hilo que Romanos 8:28 pero en sus palabras. Puede ser subtítulo o epígrafe.
 - **Escena para el cap. 10:** la respuesta instantánea "NO ME GUSTA", la confrontación que salió al revés, la familia "involucrada", el "reporte de noticias". La lista en viñetas puede quedar tal cual: es honesta y tiene ritmo.
 - **Giro para el cap. 11:** el tachón. Escribió "así como llegaste, así te vas" y lo tachó. Ese tachón es un capítulo entero.

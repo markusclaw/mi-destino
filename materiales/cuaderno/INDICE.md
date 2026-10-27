@@ -4,11 +4,11 @@ Todas las notas, cartas y entradas de diario, y a qué capítulo van. Una línea
 
 | Fecha | Autor | Archivo | Capítulo(s) | Uso | Estado |
 |-------|-------|---------|-------------|-----|--------|
-| 2016-12-25 | Greg | `2016-12-25-greg-oracion-por-mi-esposa.md` | 7, 11, 12 | recuadro / cita | transcrita |
-| 2018-10-22 | Greg | `2018-10-22-greg-gracias-por-mi-esposa.md` | 7 | cita | transcrita, falta contexto |
-| 2018-10-23 | Greg | `2018-10-23-greg-una-nueva-era.md` | 7, 14 | recuadro / cita | transcrita |
+| 2016-12-25 | Greg | `2016-12-25-greg-oracion-por-mi-esposa.md` | 8, 12, 13 | recuadro / cita | transcrita |
+| 2018-10-22 | Greg | `2018-10-22-greg-gracias-por-mi-esposa.md` | 8 | cita | transcrita, falta contexto |
+| 2018-10-23 | Greg | `2018-10-23-greg-una-nueva-era.md` | 8, 15 | recuadro / cita | transcrita |
 | 2026-10 | Nohemi | `2026-10-xx-prologo-de-nohemi.md` | Prólogo | texto base | integrado |
-| 2026-10-08 | Nohemi | `2026-10-08-carta-de-nohemi-a-greg.md` | 9, 10, 11 | recuadro / citas | transcrita |
+| 2026-10-08 | Nohemi | `2026-10-08-carta-de-nohemi-a-greg.md` | 10, 11, 12 | recuadro / citas | transcrita |
 
 ## El tejido que ya se ve
 
