@@ -1,9 +1,9 @@
-# Dos caminos, un destino — Mapa del libro
+# Ágape — Mapa del libro
 
 > Este archivo es el índice vivo del libro. Aquí se ve la estructura completa,
 > quién escribe cada capítulo y en qué estado va. Los textos viven en `manuscrito/`.
 
-**Título:** Dos caminos, un destino (nombre corto: DESTINO) — 27 oct 2026
+**Título:** Ágape · **Subtítulo:** Dos caminos, un destino (27 oct 2026)
 **Subtítulo (abierto):** *La historia de cómo Dios nos trajo hasta aquí*
 **Autores:** Nohemi y Greg
 **Idioma:** español
@@ -80,5 +80,5 @@ Estados: `idea` → `preguntas` → `borrador` → `revisado` → `final`
 
 ## Título
 
-**Dos caminos, un destino.** Nombre corto: **DESTINO** (así aparece en la barra del sitio y en el repo).
-Historial: "Mi Destino" → "DESTINO" → "Dos caminos, un destino" (27 oct 2026). Subtítulo: por ahora no lleva; la frase de portada hace ese trabajo.
+**Ágape**, con el subtítulo *Dos caminos, un destino*. Ágape: el amor de Dios, el que no se gana y no se acaba.
+Historial: "Mi Destino" → "DESTINO" → "Dos caminos, un destino" → **Ágape · Dos caminos, un destino** (27 oct 2026).

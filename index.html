@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex,nofollow">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#0E0C0A">
-<title>Dos caminos, un destino</title>
+<title>Ágape · Dos caminos, un destino</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
@@ -53,7 +53,8 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .pg.portada{display:grid;place-items:center;text-align:center}
 .portada .in{max-width:42rem;padding:0 0 3rem}
 .portada .autores{font-family:var(--sans);font-size:.9rem;color:var(--fg-2);margin:0 0 1.8rem}
-.portada h1{font-family:var(--display);font-weight:400;font-size:clamp(3rem,9vw,6.2rem);line-height:1;letter-spacing:-.02em;margin:0 0 2.6rem}
+.portada h1{font-family:var(--display);font-weight:400;font-size:clamp(4.2rem,15vw,9.5rem);line-height:.9;letter-spacing:-.01em;margin:0 0 1.1rem}
+.portada .subtitulo{font-family:var(--display);font-style:italic;font-size:clamp(1.3rem,3vw,1.9rem);color:var(--fg-2);margin:0 0 2.6rem}
 .caminos{display:block;width:min(17rem,68%);height:auto;margin:0 auto 2.8rem;overflow:visible}
 .caminos path{fill:none;stroke-width:1.4;stroke-linecap:round}
 .caminos .n{stroke:var(--nohemi)} .caminos .g{stroke:var(--greg)} .caminos .u{stroke:var(--fg-2)}
@@ -81,6 +82,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .parte-abre .caps button{color:var(--fg-2)}
 .parte-abre .caps button:hover{color:var(--fg);text-decoration:underline;text-underline-offset:.2em}
 .fin .titulo{font-family:var(--display);font-size:clamp(2rem,4vw,2.8rem);font-weight:400;margin:0 0 .8rem}
+.fin .subtitulo{font-family:var(--display);font-style:italic;font-size:1.25rem;color:var(--fg-2);margin:-.4rem auto 1.6rem}
 .fin p{color:var(--fg-2);max-width:30rem;margin:0 auto 1.2rem}
 .fin .leyenda{font-family:var(--sans);font-size:.9rem;color:var(--fg-2);display:flex;gap:1.4rem;justify-content:center;margin:1.6rem 0 2.4rem}
 .fin .leyenda span{display:inline-flex;align-items:center;gap:.45rem}
@@ -88,6 +90,26 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .fin .acciones button{padding:.6rem 1rem;border-radius:999px;color:var(--fg-2);box-shadow:inset 0 0 0 1px var(--line)}
 .fin .acciones button:hover{color:var(--fg)}
 .fin .pie{margin-top:3rem;font-family:var(--sans);font-size:.8rem;color:var(--fg-3)}
+
+/* definition */
+.definicion .entrada{max-width:30rem;text-align:left;width:100%}
+.definicion h2{font-family:var(--display);font-weight:400;font-size:clamp(3rem,8vw,4.4rem);line-height:1;margin:0 0 .5rem}
+.definicion .pron{font-family:var(--sans);font-size:.9rem;color:var(--fg-2);margin:0 0 1.4rem;letter-spacing:.02em}
+.definicion .pron span{font-style:italic;font-family:var(--serif);color:var(--fg-3);margin-left:.5rem;letter-spacing:0}
+.definicion .origen{color:var(--fg-2);margin:0 0 1.4rem;font-size:1.05rem}
+.definicion .g{font-family:var(--serif);color:var(--fg);font-size:1.1em}
+.definicion ol{margin:0 0 2rem;padding-left:1.4rem}
+.definicion li{margin:0 0 .6rem;padding-left:.3rem}
+.definicion li::marker{font-family:var(--sans);font-size:.8rem;color:var(--fg-3)}
+.definicion .hebreo{border-top:1px solid var(--line);padding-top:1.4rem;margin-bottom:1.8rem}
+.definicion .hebreo .h{margin:0 0 .5rem;display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap}
+.definicion .hebreo [lang="he"]{font-size:1.6rem;color:var(--fg);line-height:1}
+.definicion .hebreo i{color:var(--fg-2)}
+.definicion .hebreo .et{font-family:var(--sans);font-size:.78rem;color:var(--fg-3)}
+.definicion .hebreo p{color:var(--fg-2);font-size:1rem;line-height:1.55;margin:0}
+.definicion .citas{border-top:1px solid var(--line);padding-top:1.4rem}
+.definicion .v{font-family:var(--display);font-style:italic;font-size:1.3rem;line-height:1.35;margin:0 0 1rem}
+.definicion .v cite{display:block;font-family:var(--sans);font-style:normal;font-size:.8rem;color:var(--fg-3);margin-top:.25rem}
 
 /* index */
 .sec h2{font-family:var(--display);font-size:clamp(2rem,3.6vw,2.6rem);font-weight:400;margin:0 0 .3rem}
@@ -183,7 +205,7 @@ mark.revisar{background:rgba(224,113,126,.25);color:inherit;font-family:var(--sa
 
 <div class="barra" id="barra">
   <button class="btn-ico" id="abrir-indice" type="button" aria-label="Abrir índice" title="Índice (i)"><svg class="ico" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
-  <a class="logo" href="#/portada">Destino</a>
+  <a class="logo" href="#/portada">Ágape</a>
   <span class="donde" id="donde"></span>
 </div>
 
@@ -198,11 +220,21 @@ mark.revisar{background:rgba(224,113,126,.25);color:inherit;font-family:var(--sa
 <section class="pg portada" data-id="portada" data-titulo="Portada" data-grupo="">
   <div class="in">
     <p class="autores">Nohemi y Greg</p>
-    <h1>Dos caminos,<br>un destino</h1>
+    <h1>Ágape</h1>
+    <p class="subtitulo">Dos caminos, un destino</p>
     <svg class="caminos" viewBox="0 0 240 80" aria-hidden="true"><path class="n" pathLength="1" d="M2 10 C 70 10, 100 40, 150 40"/><path class="g" pathLength="1" d="M2 70 C 70 70, 100 40, 150 40"/><path class="u" pathLength="1" d="M150 40 L 238 40"/><circle cx="150" cy="40" r="2.6"/></svg>
     <div class="meta"><button class="btn" type="button" data-ir="prologo">Empezar a leer</button><button class="btn sec" type="button" id="continuar" hidden></button></div>
   </div>
 </section>
+
+<section class="pg centrada definicion" data-id="definicion" data-titulo="Ágape: la palabra" data-grupo=""><div class="wrap"><div class="entrada">
+  <h2>Ágape</h2>
+  <p class="pron">á·ga·pe <span>sustantivo</span></p>
+  <p class="origen">Del griego <span lang="grc" class="g">ἀγάπη</span> <i>agápē</i>, «amor».</p>
+  <ol><li>El amor de Dios: el que se da sin condición, no se gana y no se acaba.</li><li>Amor que busca el bien del otro antes que el propio; amor que elige quedarse.</li><li>Entre los primeros cristianos, la comida fraterna que compartían como señal de ese amor.</li></ol>
+  <div class="hebreo"><p class="h"><span lang="he" dir="rtl">אַהֲבָה</span> <i>ahavá</i> <span class="et">en hebreo</span></p><p>Es el amor del Cantar de los Cantares y el amor con que Dios dice amar a su pueblo. Cuando el Antiguo Testamento se tradujo al griego, ahavá se vertió con frecuencia como agápē; de ahí la palabra que usa el Nuevo Testamento.</p></div>
+  <div class="citas"><p class="v">Dios es amor.<cite>1 Juan 4:8</cite></p><p class="v">Las muchas aguas no podrán apagar el amor, ni lo ahogarán los ríos.<cite>Cantares 8:7</cite></p></div>
+</div></div></section>
 
 <section class="pg centrada epi" data-id="epigrafe" data-titulo="Epígrafe" data-grupo=""><div class="wrap"><blockquote>Sabemos que a los que aman a Dios, todas las cosas les ayudan a bien.</blockquote><cite>Romanos 8:28</cite></div></section>
 
@@ -322,7 +354,7 @@ mark.revisar{background:rgba(224,113,126,.25);color:inherit;font-family:var(--sa
 </div></article>
 
 <section class="pg centrada fin" data-id="fin" data-titulo="Fin" data-grupo=""><div class="wrap">
-  <p class="titulo">Dos caminos, un destino</p><p>Un libro escrito a dos voces por Nohemi y Greg, como legado para su familia y para los que vienen. Una historia real, contada desde la fe, todavía en construcción.</p>
+  <p class="titulo">Ágape</p><p class="subtitulo">Dos caminos, un destino</p><p>Un libro escrito a dos voces por Nohemi y Greg, como legado para su familia y para los que vienen. Una historia real, contada desde la fe, todavía en construcción.</p>
   <div class="leyenda"><span><span class="voces"><i class="vn"></i></span>Nohemi</span><span><span class="voces"><i class="vg"></i></span>Greg</span><span>Romanos 8:28</span></div>
   <div class="acciones"><button type="button" data-ir="portada">Volver a la portada</button><button type="button" data-ir="indice">Ir al índice</button></div>
   <p class="pie">Borrador privado, 2026. Hecho con cariño, un capítulo a la vez.</p></div></section>
@@ -347,7 +379,7 @@ mark.revisar{background:rgba(224,113,126,.25);color:inherit;font-family:var(--sa
   }
   function grupos(drawer){
     var html='', abierto=false;
-    pgs.forEach(function(p){var d=p.dataset; if(['portada','epigrafe','indice','fin','dedicatoria'].indexOf(d.id)>-1)return;
+    pgs.forEach(function(p){var d=p.dataset; if(['portada','definicion','epigrafe','indice','fin','dedicatoria'].indexOf(d.id)>-1)return;
       if(p.classList.contains('parte-abre')){ if(abierto)html+='</ol>';
         html+= drawer?'<div class="grupo">'+d.titulo+' · '+d.sub+'</div><ol>':'<div class="parte"><b>'+d.sub+'</b><span>'+d.titulo+'</span></div><ol>'; abierto=true; return;}
       if(!d.grupo){ if(abierto){html+='</ol>';abierto=false;} html+='<ol>'+item(p,drawer)+'</ol>'; return;}
@@ -378,7 +410,7 @@ mark.revisar{background:rgba(224,113,126,.25);color:inherit;font-family:var(--sa
     document.getElementById('ant-t').textContent=a?(a.dataset.num?a.dataset.num+'. ':'')+a.dataset.titulo:'';
     document.getElementById('sig-t').textContent=b?(b.dataset.num?b.dataset.num+'. ':'')+b.dataset.titulo:'';
     document.querySelectorAll('.toc li, .cajon li').forEach(function(li){var on=li.dataset.id===d.id;li.classList.toggle('actual',on);if(on)li.setAttribute('aria-current','page');else li.removeAttribute('aria-current');});
-    document.title=(d.num?d.num+'. ':'')+(d.id==='portada'?'Dos caminos, un destino':d.titulo+' — Dos caminos, un destino');
+    document.title=(d.num?d.num+'. ':'')+(d.id==='portada'?'Ágape · Dos caminos, un destino':d.titulo+' — Ágape');
     if(d.id!=='portada'&&d.id!=='fin'){try{localStorage.setItem(KEY,d.id);}catch(e){}}
   }
   // continue reading

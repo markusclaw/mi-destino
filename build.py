@@ -122,15 +122,28 @@ def pagina_parte(i, parte, caps):
 def main():
     paginas = []
     # portada
-    titulo_h1 = esc(cfg["titulo"]).replace(", ", ",<br>", 1)
     paginas.append(f'''<section class="pg portada" data-id="portada" data-titulo="Portada" data-grupo="">
   <div class="in">
     <p class="autores">{esc(cfg["autores"])}</p>
-    <h1>{titulo_h1}</h1>
+    <h1>{esc(cfg["titulo"])}</h1>
+    <p class="subtitulo">{esc(cfg["subtitulo"])}</p>
     <svg class="caminos" viewBox="0 0 240 80" aria-hidden="true"><path class="n" pathLength="1" d="M2 10 C 70 10, 100 40, 150 40"/><path class="g" pathLength="1" d="M2 70 C 70 70, 100 40, 150 40"/><path class="u" pathLength="1" d="M150 40 L 238 40"/><circle cx="150" cy="40" r="2.6"/></svg>
     <div class="meta"><button class="btn" type="button" data-ir="prologo">Empezar a leer</button><button class="btn sec" type="button" id="continuar" hidden></button></div>
   </div>
 </section>''')
+    # definición
+    df = cfg.get("definicion")
+    if df:
+        acep = "".join(f"<li>{esc(a)}</li>" for a in df["acepciones"])
+        citas = "".join(f'<p class="v">{esc(c["texto"])}<cite>{esc(c["ref"])}</cite></p>' for c in df["citas"])
+        paginas.append(f'''<section class="pg centrada definicion" data-id="definicion" data-titulo="Ágape: la palabra" data-grupo=""><div class="wrap"><div class="entrada">
+  <h2>{esc(df["palabra"])}</h2>
+  <p class="pron">{esc(df["silabas"])} <span>{esc(df["categoria"])}</span></p>
+  <p class="origen">Del griego <span lang="grc" class="g">{esc(df["griego"])}</span> <i>{esc(df["griego_lat"])}</i>, «{esc(df["griego_sentido"])}».</p>
+  <ol>{acep}</ol>
+  <div class="hebreo"><p class="h"><span lang="he" dir="rtl">{esc(df["hebreo"])}</span> <i>{esc(df["hebreo_lat"])}</i> <span class="et">en hebreo</span></p><p>{esc(df["nota_hebreo"])}</p></div>
+  <div class="citas">{citas}</div>
+</div></div></section>''')
     # dedicatoria (si tiene texto)
     ded = leer_capitulo(MAN / "00-apertura/dedicatoria.md")
     if ded["cuerpo"]:
@@ -159,12 +172,12 @@ def main():
         paginas.append(pagina_cap(agr, "agradecimientos", "Agradecimientos", None, ""))
     f = cfg["fin"]
     paginas.append(f'''<section class="pg centrada fin" data-id="fin" data-titulo="Fin" data-grupo=""><div class="wrap">
-  <p class="titulo">{esc(cfg["titulo"])}</p><p>{esc(f["texto"])}</p>
+  <p class="titulo">{esc(cfg["titulo"])}</p><p class="subtitulo">{esc(cfg["subtitulo"])}</p><p>{esc(f["texto"])}</p>
   <div class="leyenda"><span><span class="voces"><i class="vn"></i></span>Nohemi</span><span><span class="voces"><i class="vg"></i></span>Greg</span><span>{esc(e["cita"])}</span></div>
   <div class="acciones"><button type="button" data-ir="portada">Volver a la portada</button><button type="button" data-ir="indice">Ir al índice</button></div>
   <p class="pie">{esc(f["pie"])}</p></div></section>''')
     plantilla = (RAIZ / "plantilla.html").read_text(encoding="utf-8")
-    salida = (plantilla.replace("{{TITULO}}", esc(cfg["titulo"])).replace("{{CORTO}}", esc(cfg["nombre_corto"])).replace("{{PAGINAS}}", "\n\n".join(paginas)))
+    salida = (plantilla.replace("{{TITULO}}", esc(cfg["titulo"] + " · " + cfg["subtitulo"])).replace("{{CORTO}}", esc(cfg["nombre_corto"])).replace("{{PAGINAS}}", "\n\n".join(paginas)))
     (RAIZ / "index.html").write_text(salida, encoding="utf-8")
     n = len(paginas); escritos = sum(1 for p in paginas if 'class="pg cap"' in p and 'class="vacio">Este capítulo' not in p)
     print(f"index.html generado: {n} páginas, {escritos} capítulos con texto.")

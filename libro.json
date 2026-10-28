@@ -1,6 +1,6 @@
 {
-  "titulo": "Dos caminos, un destino",
-  "nombre_corto": "Destino",
+  "titulo": "Ágape",
+  "nombre_corto": "Ágape",
   "autores": "Nohemi y Greg",
   "lead": "La historia de Nohemi y Greg: de dónde venía cada uno, cómo se cruzaron, y lo que hoy entienden que Dios estaba haciendo todo ese tiempo.",
   "estado_libro": "Borrador privado",
@@ -38,5 +38,32 @@
   "fin": {
     "texto": "Un libro escrito a dos voces por Nohemi y Greg, como legado para su familia y para los que vienen. Una historia real, contada desde la fe, todavía en construcción.",
     "pie": "Borrador privado, 2026. Hecho con cariño, un capítulo a la vez."
+  },
+  "subtitulo": "Dos caminos, un destino",
+  "definicion": {
+    "palabra": "Ágape",
+    "silabas": "á·ga·pe",
+    "categoria": "sustantivo",
+    "griego": "ἀγάπη",
+    "griego_lat": "agápē",
+    "griego_sentido": "amor",
+    "acepciones": [
+      "El amor de Dios: el que se da sin condición, no se gana y no se acaba.",
+      "Amor que busca el bien del otro antes que el propio; amor que elige quedarse.",
+      "Entre los primeros cristianos, la comida fraterna que compartían como señal de ese amor."
+    ],
+    "hebreo": "אַהֲבָה",
+    "hebreo_lat": "ahavá",
+    "nota_hebreo": "Es el amor del Cantar de los Cantares y el amor con que Dios dice amar a su pueblo. Cuando el Antiguo Testamento se tradujo al griego, ahavá se vertió con frecuencia como agápē; de ahí la palabra que usa el Nuevo Testamento.",
+    "citas": [
+      {
+        "texto": "Dios es amor.",
+        "ref": "1 Juan 4:8"
+      },
+      {
+        "texto": "Las muchas aguas no podrán apagar el amor, ni lo ahogarán los ríos.",
+        "ref": "Cantares 8:7"
+      }
+    ]
   }
 }
