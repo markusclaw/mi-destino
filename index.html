@@ -111,6 +111,30 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .definicion .v{font-family:var(--display);font-style:italic;font-size:1.3rem;line-height:1.35;margin:0 0 1rem}
 .definicion .v cite{display:block;font-family:var(--sans);font-style:normal;font-size:.8rem;color:var(--fg-3);margin-top:.25rem}
 
+/* timeline */
+.wrap.ancho{max-width:52rem}
+.linea .k{font-family:var(--display);font-style:italic;font-size:1.05rem;color:var(--fg-3);margin:0 0 .4rem}
+.linea h2{font-family:var(--display);font-weight:400;font-size:clamp(2.3rem,5vw,3.4rem);line-height:1.05;margin:0 0 .8rem}
+.linea .lead-linea{color:var(--fg-2);max-width:var(--measure);margin:0 0 2rem}
+.cab-cols,.linea .cols{display:grid;grid-template-columns:1fr 1fr;gap:0 2.5rem}
+.cab-cols{font-family:var(--sans);font-size:.8rem;color:var(--fg-2);padding:.6rem 0;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:1}
+.cab-cols span{display:flex;align-items:center;gap:.45rem}
+.cab-cols i{width:.45rem;height:.45rem;border-radius:50%;display:block}
+.linea .anio{border-bottom:1px solid var(--line);padding:1.2rem 0 1.3rem}
+.linea h3{font-family:var(--display);font-weight:400;font-size:1.7rem;margin:0 0 .7rem;color:var(--fg-2)}
+.linea ol{list-style:none;margin:0;padding:0}
+.linea li{margin:0 0 .6rem}
+.linea li button,.linea li > div{display:block;text-align:left;width:100%;padding:.5rem .75rem;border-radius:8px;box-shadow:inset 2px 0 0 var(--v)}
+.linea .ella li{--v:var(--nohemi)} .linea .el li{--v:var(--greg)} .linea .juntos li{--v:var(--fg-2)}
+.linea li button:hover{background:var(--paper-2)}
+.linea .cuando{display:block;font-family:var(--sans);font-size:.76rem;color:var(--fg-3);margin-bottom:.15rem}
+.linea .que{display:block;font-size:1rem;line-height:1.4}
+.linea .lugar{display:block;font-family:var(--sans);font-size:.76rem;color:var(--fg-2);margin-top:.2rem}
+.linea img{display:block;width:100%;border-radius:6px;margin:.35rem 0 .4rem}
+.linea .nada{color:var(--fg-3);padding-left:.75rem}
+.linea .juntos{margin-top:.5rem}
+@media (max-width:600px){ .cab-cols{display:none} .linea .cols{grid-template-columns:1fr} .linea .nada{display:none} }
+
 /* index */
 .sec h2{font-family:var(--display);font-size:clamp(2rem,3.6vw,2.6rem);font-weight:400;margin:0 0 .3rem}
 .sec .lead{font-family:var(--sans);color:var(--fg-3);margin:0 0 1.4rem;font-size:.85rem;display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
@@ -352,6 +376,13 @@ mark.revisar{background:rgba(224,113,126,.25);color:inherit;font-family:var(--sa
   <p class="k">Epílogo</p><h2>Donde estamos hoy</h2><div class="autor"><span class="dos"><span class="av n">N</span><span class="av g">G</span></span>ambos</div>
   <p class="vacio">Este capítulo todavía se está escribiendo.<small>Dónde están hoy. Se escribe al final, cuando todo lo demás esté listo.</small></p>
 </div></article>
+
+<section class="pg linea" data-id="linea" data-titulo="La línea del tiempo" data-grupo="" data-voz="ng"><div class="wrap ancho">
+  <p class="k">Archivo</p><h2>La línea del tiempo</h2>
+  <p class="lead-linea">Cada nota, carta y foto con fecha, en su lugar. A la izquierda ella, a la derecha él: dónde estaba cada uno mientras el otro vivía lo suyo.</p>
+  <div class="cab-cols"><span><i class="vn"></i>Ella</span><span><i class="vg"></i>Él</span></div>
+  <section class="anio"><h3>2016</h3><div class="cols"><ol class="ella"><li class="nada">—</li></ol><ol class="el"><li><button type="button" data-ir="cap8"><span class="cuando">25 dic, 7:45 p. m.</span><span class="que">Oración por mi esposa</span></button></li></ol></div></section><section class="anio"><h3>2018</h3><div class="cols"><ol class="ella"><li class="nada">—</li></ol><ol class="el"><li><button type="button" data-ir="cap8"><span class="cuando">22 oct, 1:15 p. m.</span><span class="que">Gracias por mi esposa</span></button></li><li><button type="button" data-ir="cap8"><span class="cuando">23 oct, 12:40 p. m.</span><span class="que">Una nueva era</span></button></li></ol></div></section><section class="anio"><h3>2026</h3><div class="cols"><ol class="ella"><li><div><span class="cuando">oct</span><span class="que">Borrador de prólogo de Nohemi (octubre 2026)</span></div></li><li><button type="button" data-ir="cap10"><span class="cuando">8 oct</span><span class="que">Carta de Nohemi a Greg</span></button></li></ol><ol class="el"><li class="nada">—</li></ol></div></section>
+</div></section>
 
 <section class="pg centrada fin" data-id="fin" data-titulo="Fin" data-grupo=""><div class="wrap">
   <p class="titulo">Ágape</p><p class="subtitulo">Dos caminos, un destino</p><p>Un libro escrito a dos voces por Nohemi y Greg, como legado para su familia y para los que vienen. Una historia real, contada desde la fe, todavía en construcción.</p>

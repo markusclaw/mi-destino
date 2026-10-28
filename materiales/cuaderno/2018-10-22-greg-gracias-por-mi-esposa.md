@@ -1,5 +1,6 @@
 ---
 fecha: 2018-10-22
+hora: 13:15
 autor: Greg
 tipo: nota del teléfono
 idioma: inglés (original) + español

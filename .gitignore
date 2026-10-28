@@ -1,0 +1,7 @@
+
+# Fotos originales: se guardan fuera de git (Dropbox/Drive). En git van solo fotos.json y las copias livianas de _web/.
+materiales/fotos/nohemi/
+materiales/fotos/greg/
+materiales/fotos/juntos/
+# Coordenadas GPS de las fotos: privadas, nunca se suben (el repositorio es público).
+materiales/fotos/ubicaciones.json

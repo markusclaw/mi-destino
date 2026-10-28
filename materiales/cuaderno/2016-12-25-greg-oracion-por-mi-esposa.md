@@ -1,5 +1,6 @@
 ---
 fecha: 2016-12-25
+hora: 19:45
 autor: Greg
 tipo: oración (nota del teléfono, escrita en mayúsculas)
 idioma: inglés (original) + español (traducción de trabajo)

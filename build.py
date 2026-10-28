@@ -119,6 +119,90 @@ def pagina_parte(i, parte, caps):
   <div class="wrap"><p class="k">{esc(parte["ordinal"])}</p><h2>{esc(parte["titulo"])}</h2><p>{esc(parte["descripcion"])}</p><div class="caps">{lista}</div></div>
 </section>'''
 
+
+# ---------- línea del tiempo (archivo) ----------
+MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"]
+
+def frontmatter(txt):
+    m = re.match(r"^---\n(.*?)\n---\n", txt, re.S); meta = {}
+    if m:
+        for l in m.group(1).splitlines():
+            if ":" in l:
+                k, v = l.split(":", 1); meta[k.strip()] = v.strip().strip('"')
+    return meta
+
+def parse_fecha(s):
+    m = re.match(r"(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?", s or "")
+    return (int(m.group(1)), int(m.group(2) or 0), int(m.group(3) or 0)) if m else None
+
+def h24(h):
+    m = re.match(r"(\d{1,2}):(\d{2})\s*([AaPp])?", h or "")
+    if not m: return ""
+    hh, mm = int(m.group(1)), m.group(2)
+    if m.group(3):
+        pm = m.group(3).lower() == "p"
+        hh = (hh % 12) + (12 if pm else 0)
+    return f"{hh:02d}:{mm}"
+
+def hora_es(h):
+    if not h: return ""
+    hh, mm = int(h[:2]), h[3:5]
+    return f"{(hh % 12) or 12}:{mm} " + ("a. m." if hh < 12 else "p. m.")
+
+def recolectar():
+    items = []
+    for p in sorted((RAIZ / "materiales" / "cuaderno").glob("20*.md")):
+        txt = p.read_text(encoding="utf-8"); meta = frontmatter(txt)
+        f = parse_fecha(meta.get("fecha"))
+        if not f: continue
+        h1 = re.search(r"^# (.+)$", txt, re.M); titulo = h1.group(1) if h1 else p.stem
+        hora = h24(meta.get("hora") or (re.search(r"\d{1,2}:\d{2}\s*[AP]M", titulo) or [""])[0])
+        titulo = re.split(r"\s+—\s+", titulo)[0]
+        caps = re.findall(r"\d+", meta.get("capitulos", ""))
+        items.append({"fecha": f, "hora": hora, "autor": voz_codigo(meta.get("autor", "")), "titulo": titulo,
+                      "cap": caps[0] if caps else None, "foto": None, "lugar": meta.get("lugar", "")})
+    fj = RAIZ / "materiales" / "fotos" / "fotos.json"
+    if fj.exists():
+        for ruta, d in json.loads(fj.read_text(encoding="utf-8")).items():
+            f = parse_fecha(d.get("fecha"))
+            if not f: continue
+            q = (d.get("quien") or "").lower()
+            items.append({"fecha": f, "hora": h24(d.get("hora", "")), "autor": "n" if q.startswith("noh") else "g" if q.startswith("greg") else "ng",
+                          "titulo": d.get("pie", ""), "cap": str(d.get("capitulo") or "") or None, "foto": d.get("web") or ruta, "lugar": d.get("lugar", "")})
+    items.sort(key=lambda x: (x["fecha"], x["hora"]))
+    return items
+
+def item_linea(it):
+    y, mo, d = it["fecha"]
+    cuando = ((f"{d} " if d else "") + (MESES[mo - 1] if mo else "")).strip()
+    if it["hora"]: cuando += f", {hora_es(it['hora'])}"
+    img = f'<img src="{esc(it["foto"])}" alt="" loading="lazy">' if it["foto"] else ""
+    que = f'<span class="que">{esc(it["titulo"])}</span>' if it["titulo"] else ""
+    lugar = f'<span class="lugar">{esc(it["lugar"])}</span>' if it["lugar"] else ""
+    cuerpo = f'<span class="cuando">{esc(cuando)}</span>{img}{que}{lugar}'
+    if it["cap"]: return f'<li><button type="button" data-ir="cap{it["cap"]}">{cuerpo}</button></li>'
+    return f'<li><div>{cuerpo}</div></li>'
+
+def pagina_linea():
+    items = recolectar()
+    if not items: return ""
+    anios = {}
+    for it in items: anios.setdefault(it["fecha"][0], []).append(it)
+    vacio = '<li class="nada">—</li>'
+    bloques = []
+    for y in sorted(anios):
+        col = {"n": [], "g": [], "ng": []}
+        for it in anios[y]: col[it["autor"]].append(item_linea(it))
+        ella = "".join(col["n"]) or vacio; el = "".join(col["g"]) or vacio
+        juntos = f'<ol class="juntos">{"".join(col["ng"])}</ol>' if col["ng"] else ""
+        bloques.append(f'<section class="anio"><h3>{y}</h3><div class="cols"><ol class="ella">{ella}</ol><ol class="el">{el}</ol></div>{juntos}</section>')
+    return f'''<section class="pg linea" data-id="linea" data-titulo="La línea del tiempo" data-grupo="" data-voz="ng"><div class="wrap ancho">
+  <p class="k">Archivo</p><h2>La línea del tiempo</h2>
+  <p class="lead-linea">Cada nota, carta y foto con fecha, en su lugar. A la izquierda ella, a la derecha él: dónde estaba cada uno mientras el otro vivía lo suyo.</p>
+  <div class="cab-cols"><span><i class="vn"></i>Ella</span><span><i class="vg"></i>Él</span></div>
+  {"".join(bloques)}
+</div></section>'''
+
 def main():
     paginas = []
     # portada
@@ -170,6 +254,8 @@ def main():
     agr = leer_capitulo(MAN / "05-cierre/agradecimientos.md")
     if agr["cuerpo"]:
         paginas.append(pagina_cap(agr, "agradecimientos", "Agradecimientos", None, ""))
+    linea = pagina_linea()
+    if linea: paginas.append(linea)
     f = cfg["fin"]
     paginas.append(f'''<section class="pg centrada fin" data-id="fin" data-titulo="Fin" data-grupo=""><div class="wrap">
   <p class="titulo">{esc(cfg["titulo"])}</p><p class="subtitulo">{esc(cfg["subtitulo"])}</p><p>{esc(f["texto"])}</p>
