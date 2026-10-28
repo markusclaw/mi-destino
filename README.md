@@ -1,4 +1,5 @@
-# Destino
+# Ágape
+*Dos caminos, un destino*
 
 Libro de Nohemi y Greg. La historia de los dos caminos que nos trajeron hasta aquí,
 escrita para quien todavía está buscando a esa persona.
